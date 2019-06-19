@@ -11,7 +11,7 @@
 
         function simpan_produk($kode,$nama,$kategori,$modal,$jual,$stok,$deskripsi,$gambar){
             $hasil=$this->db->query("INSERT INTO tb_produk (id_produk,nama_produk,harga_modal,harga_jual,id_kategori,stok_produk,deskripsi_produk,gambar_produk) VALUES ('$kode','$nama','$modal','$jual','$kategori','$stok','$deskripsi','$gambar')");
-            return $hasil->result();
+            return $hasil;
         }
         
         function get_produk_byid($kode){
@@ -36,7 +36,7 @@
         }
 
         function update_produk($kode,$nama,$kategori,$modal,$jual,$stok,$deskripsi,$gambar){
-            $hasil=$this->db->query("UPDATE tb_produk SET id_produk='$kode',nama_produk='$nama',harga_modal='$modal',harga_jual='$jual',id_kategori='$kategori',stok_produk='$stok',deskripsi_produk='$deskripsi',gambar_produk='$gambar'");
+            $hasil=$this->db->query("UPDATE tb_produk SET id_produk='$kode',nama_produk='$nama',harga_modal='$modal',harga_jual='$jual',id_kategori='$kategori',stok_produk='$stok',deskripsi_produk='$deskripsi',gambar_produk='$gambar' WHERE id_produk='$kode'");
             return $hasil;
         }
 

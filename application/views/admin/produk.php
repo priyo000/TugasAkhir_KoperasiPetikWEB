@@ -301,6 +301,34 @@ figure figcaption {
                 </div>
             </div>
         </div>
+
+        <!-- modalimage -->
+<div id="uploadimageModal" class="modal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal">&times;</button>
+        		<h4 class="modal-title">Upload & Crop Image</h4>
+      		</div>
+      		<div class="modal-body">
+        		<div class="row">
+  					<div class="col-md-8 text-center">
+						  <div id="image_demo" style="width:350px; margin-top:30px"></div>
+  					</div>
+  					<div class="col-md-4" style="padding-top:30px;">
+  						<br />
+  						<br />
+  						<br/>
+						  <button class="btn btn-success crop_image">Crop & Upload Image</button>
+					</div>
+				</div>
+      		</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      		</div>
+    	</div>
+    </div>
+</div>
         <!--END MODAL HAPUS-->
 
         
@@ -347,7 +375,7 @@ figure figcaption {
                     for(i=0; i<data.length; i++){
                         html += '<tr>'+
                                 '<td>'+data[i].id_produk+'</td>'+
-                                '<td>'+data[i].gambar_produk+'</td>'+
+                                '<td><img src="<?=base_url()?>assets/image/'+data[i].gambar_produk+'"/></td>'+
                                 '<td>'+data[i].nama_produk+'</td>'+
                                 '<td>'+data[i].id_kategori+'</td>'+
                                 '<td>'+data[i].harga_modal+'</td>'+
@@ -379,7 +407,7 @@ figure figcaption {
                         $('#ModalaEdit').modal('show');
                         $('[name="kodeedit"]').val(data.id_produk);
                         $('[name="namaedit"]').val(data.nama_produk);
-                        $('[name="kategoriedit"] option').eq(data.id_kategori).prop('selected', true);;
+                        $('[name="kategoriedit"] option').eq(data.id_kategori).prop('selected', true);
                         $('[name="modaledit"]').val(data.harga_modal);
                         $('[name="jualedit"]').val(data.harga_jual);
                         $('[name="stokedit"]').val(data.stok_produk);
@@ -415,14 +443,14 @@ figure figcaption {
                 dataType : "JSON",
                 data : {kode:kode, nama:nama, kategori:kategori, modal:modal, jual:jual, stok:stok, deskripsi:deskripsi, gambar:gambar},
                 success: function(data){
-                    // $('[name="kode"]').val("");
-                    // $('[name="nama"]').val("");
-                    // $('#kategori').attr('selectedIndex',0);
-                    // $('[name="modal"]').val("");
-                    // $('[name="jual"]').val("");
-                    // $('[name="stok"]').val("");
-                    // $('[name="deskripsi"]').val("");
-                    // $('[name="gambar"]').val("");
+                    $('[name="kode"]').val("");
+                    $('[name="nama"]').val("");
+                    $('[name="kategori"] option').eq(0).prop('selected', true);
+                    $('[name="modal"]').val("");
+                    $('[name="jual"]').val("");
+                    $('[name="stok"]').val("");
+                    $('[name="deskripsi"]').val("");
+                    $('[name="gambar"]').val("");
                     $('#ModalaAdd').modal('hide');
                     tampil_data_produk();
                 }
@@ -432,20 +460,30 @@ figure figcaption {
  
         //Update Barang
         $('#btn_update').on('click',function(){
-            var kobar=$('#kode_barang2').val();
-            var nabar=$('#nama_barang2').val();
-            var harga=$('#harga2').val();
+            var kode=$('#kode_produk2').val();
+            var nama=$('#nama_produk2').val();
+            var kategori=$('#kategori2 option:selected').index();
+            var modal=$('#modal2').val();
+            var jual=$('#jual2').val();
+            var stok=$('#stok2').val();
+            var deskripsi=$('#deskripsi2').val();
+            var gambar=$('#gambar2').val();
             $.ajax({
                 type : "POST",
-                url  : "<?php echo base_url('index.php/barang/update_barang')?>",
+                url  : "<?php echo base_url('index.php/produk/update_produk')?>",
                 dataType : "JSON",
-                data : {kobar:kobar , nabar:nabar, harga:harga},
+                data : {kode:kode, nama:nama, kategori:kategori, modal:modal, jual:jual, stok:stok, deskripsi:deskripsi, gambar:gambar},
                 success: function(data){
-                    $('[name="kobar_edit"]').val("");
-                    $('[name="nabar_edit"]').val("");
-                    $('[name="harga_edit"]').val("");
+                    // $('[name="kode"]').val("");
+                    // $('[name="nama"]').val("");
+                    // $('[name="kategori"] option').eq(0).prop('selected', true);
+                    // $('[name="modal"]').val("");
+                    // $('[name="jual"]').val("");
+                    // $('[name="stok"]').val("");
+                    // $('[name="deskripsi"]').val("");
+                    // $('[name="gambar"]').val("");
                     $('#ModalaEdit').modal('hide');
-                    tampil_data_barang();
+                    tampil_data_produk();
                 }
             });
             return false;
