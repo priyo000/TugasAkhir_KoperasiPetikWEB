@@ -91,22 +91,12 @@ figure figcaption {
                   <th>Harga Modal</th>
                   <th>Harga Jual</th>
                   <th>Stok</th>
+                  <th>Terjual</th>
                   <th>Aksi</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td>X</td>
-                  <td>0</td>
-                  <td><a href="javascript:;" class="btn btn-info btn-xs item_edit" data="'+data[i].barang_kode+'">Edit</a><a href="javascript:;" class="btn btn-danger btn-xs item_hapus pull-right" data="'+data[i].barang_kode+'">Hapus</a></td>
-                </tr>
+                <tbody id="show_data">
+                
                 </tbody>
               </table>
             </div>
@@ -134,7 +124,7 @@ figure figcaption {
                 <div class="form-group">
                   <label class="control-label col-xs-3">Gambar</label>
                   <div class="col-xs-9">
-                  
+                  <input name="gambar" id="gambar" class="form-control" type="text" placeholder="Kode Barang" style="width:335px;" required>
                   </div> 
                 </div>
 
@@ -226,21 +216,21 @@ figure figcaption {
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Kode Barang</label>
                         <div class="col-xs-9">
-                            <input name="kode" id="kode_produk2" class="form-control" type="text" placeholder="Kode Barang" style="width:335px;" required>
+                            <input name="kodeedit" id="kode_produk2" class="form-control" type="text" placeholder="Kode Barang" style="width:335px;" required>
                         </div>
                     </div>
  
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Nama Barang</label>
                         <div class="col-xs-9">
-                            <input name="nama" id="nama_produk2" class="form-control" type="text" placeholder="Nama Barang" style="width:335px;" required>
+                            <input name="namaedit" id="nama_produk2" class="form-control" type="text" placeholder="Nama Barang" style="width:335px;" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                       <label class="control-label col-xs-3">Kategori</label>
                       <div class="col-xs-9">
-                      <select class="form-control select2 select2-hidden-accessible" name="kategori" id="kategori2" style="width:335px;" tabindex="-1" aria-hidden="true">
+                      <select class="form-control select2 select2-hidden-accessible" name="kategoriedit" id="kategori2" style="width:335px;" tabindex="-1" aria-hidden="true">
                         <option selected="selected">Pilih</option>
                         <option>Makanan</option>
                         <option>Minuman</option>
@@ -252,28 +242,28 @@ figure figcaption {
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Harga Modal</label>
                         <div class="col-xs-9">
-                            <input name="modal" id="modal2" class="form-control" type="text" placeholder="Harga Modal" style="width:335px;" required>
+                            <input name="modaledit" id="modal2" class="form-control" type="text" placeholder="Harga Modal" style="width:335px;" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Harga Jual</label>
                         <div class="col-xs-9">
-                            <input name="jual" id="jual2" class="form-control" type="text" placeholder="Harga Jual" style="width:335px;" required>
+                            <input name="jualedit" id="jual2" class="form-control" type="text" placeholder="Harga Jual" style="width:335px;" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Stok</label>
                         <div class="col-xs-9">
-                            <input name="stok" id="stok2" class="form-control" type="text" placeholder="Stok" style="width:335px;" required>
+                            <input name="stokedit" id="stok2" class="form-control" type="text" placeholder="Stok" style="width:335px;" required>
                         </div>
                     </div>
 
                 <div class="form-group">
                   <label class="control-label col-xs-3">Deskripsi</label>
                   <div class="col-xs-9">
-                  <textarea class="form-control" name="deskripsi" id="deskripsi2" rows="3" placeholder="Deskripsi ..."></textarea>
+                  <textarea class="form-control" name="deskripsiedit" id="deskripsi2" rows="3" placeholder="Deskripsi ..."></textarea>
                   </div>
                 </div>
  
@@ -299,7 +289,7 @@ figure figcaption {
                     <form class="form-horizontal">
                     <div class="modal-body">
                                            
-                            <input type="hidden" name="kode" id="textkode" value="">
+                            <input type="hidden" name="kodehapus" id="textkode" value="">
                             <div class="alert alert-warning"><p>Apakah Anda yakin mau memhapus barang ini?</p></div>
                                          
                     </div>
@@ -340,7 +330,7 @@ figure figcaption {
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
-        tampil_data_barang();   //pemanggilan fungsi tampil barang.
+        tampil_data_produk();   //pemanggilan fungsi tampil barang.
          
         $('#mydata').dataTable();
           
@@ -356,12 +346,17 @@ figure figcaption {
                     var i;
                     for(i=0; i<data.length; i++){
                         html += '<tr>'+
-                                '<td>'+data[i].barang_kode+'</td>'+
-                                '<td>'+data[i].barang_nama+'</td>'+
-                                '<td>'+data[i].barang_harga+'</td>'+
+                                '<td>'+data[i].id_produk+'</td>'+
+                                '<td>'+data[i].gambar_produk+'</td>'+
+                                '<td>'+data[i].nama_produk+'</td>'+
+                                '<td>'+data[i].id_kategori+'</td>'+
+                                '<td>'+data[i].harga_modal+'</td>'+
+                                '<td>'+data[i].harga_jual+'</td>'+
+                                '<td>'+data[i].stok_produk+'</td>'+
+                                '<td>'+data[i].terjual+'</td>'+
                                 '<td style="text-align:right;">'+
-                                    '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="'+data[i].barang_kode+'">Edit</a>'+' '+
-                                    '<a href="javascript:;" class="btn btn-danger btn-xs item_hapus" data="'+data[i].barang_kode+'">Hapus</a>'+
+                                    '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="'+data[i].id_produk+'">Edit</a>'+' '+
+                                    '<a href="javascript:;" class="btn btn-danger btn-xs item_hapus" data="'+data[i].id_produk+'">Hapus</a>'+
                                 '</td>'+
                                 '</tr>';
                     }
@@ -376,15 +371,20 @@ figure figcaption {
             var id=$(this).attr('data');
             $.ajax({
                 type : "GET",
-                url  : "<?php echo base_url('index.php/barang/get_barang')?>",
+                url  : "<?php echo base_url('index.php/produk/get_produk')?>",
                 dataType : "JSON",
                 data : {id:id},
                 success: function(data){
-                    $.each(data,function(barang_kode, barang_nama, barang_harga){
+                    $.each(data,function(id_produk,nama_produk,kategori_produk,harga_modal,harga_jual,stok_produk,deskripsi_produk,gambar_produk){
                         $('#ModalaEdit').modal('show');
-                        $('[name="kobar_edit"]').val(data.barang_kode);
-                        $('[name="nabar_edit"]').val(data.barang_nama);
-                        $('[name="harga_edit"]').val(data.barang_harga);
+                        $('[name="kodeedit"]').val(data.id_produk);
+                        $('[name="namaedit"]').val(data.nama_produk);
+                        $('[name="kategoriedit"] option').eq(data.id_kategori).prop('selected', true);;
+                        $('[name="modaledit"]').val(data.harga_modal);
+                        $('[name="jualedit"]').val(data.harga_jual);
+                        $('[name="stokedit"]').val(data.stok_produk);
+                        $('[name="deskripsiedit"]').val(data.deskripsi_produk);
+                        $('[name="gambaredit"]').val(data.gambar_produk);
                     });
                 }
             });
@@ -396,25 +396,35 @@ figure figcaption {
         $('#show_data').on('click','.item_hapus',function(){
             var id=$(this).attr('data');
             $('#ModalHapus').modal('show');
-            $('[name="kode"]').val(id);
+            $('[name="kodehapus"]').val(id);
         });
  
         //Simpan Barang
         $('#btn_simpan').on('click',function(){
-            var kobar=$('#kode_barang').val();
-            var nabar=$('#nama_barang').val();
-            var harga=$('#harga').val();
+            var kode=$('#kode_produk').val();
+            var nama=$('#nama_produk').val();
+            var kategori=$('#kategori option:selected').index();
+            var modal=$('#modal').val();
+            var jual=$('#jual').val();
+            var stok=$('#stok').val();
+            var deskripsi=$('#deskripsi').val();
+            var gambar=$('#gambar').val();
             $.ajax({
                 type : "POST",
-                url  : "<?php echo base_url('index.php/barang/simpan_barang')?>",
+                url  : "<?php echo base_url('index.php/produk/simpan_produk')?>",
                 dataType : "JSON",
-                data : {kobar:kobar , nabar:nabar, harga:harga},
+                data : {kode:kode, nama:nama, kategori:kategori, modal:modal, jual:jual, stok:stok, deskripsi:deskripsi, gambar:gambar},
                 success: function(data){
-                    $('[name="kobar"]').val("");
-                    $('[name="nabar"]').val("");
-                    $('[name="harga"]').val("");
+                    // $('[name="kode"]').val("");
+                    // $('[name="nama"]').val("");
+                    // $('#kategori').attr('selectedIndex',0);
+                    // $('[name="modal"]').val("");
+                    // $('[name="jual"]').val("");
+                    // $('[name="stok"]').val("");
+                    // $('[name="deskripsi"]').val("");
+                    // $('[name="gambar"]').val("");
                     $('#ModalaAdd').modal('hide');
-                    tampil_data_barang();
+                    tampil_data_produk();
                 }
             });
             return false;
@@ -446,12 +456,12 @@ figure figcaption {
             var kode=$('#textkode').val();
             $.ajax({
             type : "POST",
-            url  : "<?php echo base_url('index.php/barang/hapus_barang')?>",
+            url  : "<?php echo base_url('index.php/produk/hapus_produk')?>",
             dataType : "JSON",
                     data : {kode: kode},
                     success: function(data){
                             $('#ModalHapus').modal('hide');
-                            tampil_data_barang();
+                            tampil_data_produk();
                     }
                 });
                 return false;

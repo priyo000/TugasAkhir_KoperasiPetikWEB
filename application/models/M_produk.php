@@ -10,14 +10,14 @@
         }
 
         function simpan_produk($kode,$nama,$kategori,$modal,$jual,$stok,$deskripsi,$gambar){
-            $hasil=$this->db->query("INSERT INTO tb_produk (id_produk,nama_produk,harga_modal,harga_jual,id_kategori,stok_produk,deskripsi_produk,gambar_produk) VALUES ('$kode','$nama','$kategori','$modal','$jual','$stok','$deskripsi','$gambar')");
+            $hasil=$this->db->query("INSERT INTO tb_produk (id_produk,nama_produk,harga_modal,harga_jual,id_kategori,stok_produk,deskripsi_produk,gambar_produk) VALUES ('$kode','$nama','$modal','$jual','$kategori','$stok','$deskripsi','$gambar')");
             return $hasil->result();
         }
         
         function get_produk_byid($kode){
             $hsil=$this->db->query("SELECT * FROM tb_produk WHERE id_produk='$kode'");
             if ($hsil->num_rows()>0) {
-                foreach ($hsil->result as $data) {
+                foreach ($hsil->result() as $data) {
                     $hasil=array(
                         'id_produk' => $data->id_produk,
                         'nama_produk' => $data->nama_produk,
@@ -27,7 +27,7 @@
                         'stok_produk' => $data->stok_produk,
                         'deskripsi_produk' => $data->deskripsi_produk,
                         'gambar_produk' => $data->gambar_produk,
-                        'terjual' => $data->terjual
+                        // 'terjual' => $data->terjual
 
                     );
                 }
