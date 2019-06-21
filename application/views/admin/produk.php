@@ -7,37 +7,6 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
-  <style>
-    label.cabinet{
-	display: block;
-	cursor: pointer;
-}
-
-label.cabinet input.file{
-	position: relative;
-	height: 100%;
-	width: auto;
-	opacity: 0;
-	-moz-opacity: 0;
-  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
-  margin-top:-30px;
-}
-
-#upload-demo{
-	width: 250px;
-	height: 250px;
-  padding-bottom:25px;
-}
-figure figcaption {
-    position: absolute;
-    bottom: 0;
-    color: #fff;
-    width: 100%;
-    padding-left: 9px;
-    padding-bottom: 5px;
-    text-shadow: 0 0 10px #000;
-}
-  </style>
   <?php $this->load->view('admin/_part/cssjs.php')?>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -84,7 +53,8 @@ figure figcaption {
               <table id="example1" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Kode</th>
+                  <!-- <th>Kode</th> -->
+                  <th>Kode Barang</th>
                   <th>Gambar</th>
                   <th>Nama Produk</th>
                   <th>Kategori</th>
@@ -118,23 +88,23 @@ figure figcaption {
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 class="modal-title" id="myModalLabel">Tambah Produk</h3>
             </div>
-            <form class="form-horizontal">
+            <form class="form-horizontal" id="submit">
                 <div class="modal-body">
                 
                 <div class="form-group">
                   <label class="control-label col-xs-3">Gambar</label>
                   <div class="col-xs-9">
-                  <input name="gambar" id="gambar" class="form-control" type="text" placeholder="Kode Barang" style="width:335px;" required>
+                  <input type="file" name="file" id="gambar" class="form-control" style="width:335px;" required>
                   </div> 
                 </div>
 
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="control-label col-xs-3" >Kode Barang</label>
                         <div class="col-xs-9">
                             <input name="kode" id="kode_produk" class="form-control" type="text" placeholder="Kode Barang" style="width:335px;" required>
                         </div>
-                    </div>
+                    </div> -->
  
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Nama Barang</label>
@@ -146,6 +116,7 @@ figure figcaption {
                     <div class="form-group">
                       <label class="control-label col-xs-3">Kategori</label>
                       <div class="col-xs-9">
+                      <!-- <input name="kategori" id="nama_produk" class="form-control" type="text" placeholder="Nama Barang" style="width:335px;" required> -->
                       <select class="form-control select2 select2-hidden-accessible" name="kategori" id="kategori" style="width:335px;" tabindex="-1" aria-hidden="true">
                         <option selected="selected">Pilih</option>
                         <option>Makanan</option>
@@ -187,7 +158,7 @@ figure figcaption {
  
                 <div class="modal-footer">
                     <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
-                    <button class="btn btn-info" id="btn_simpan">Simpan</button>
+                    <button class="btn btn-info" type="submit" id="btn_simpan">Simpan</button>
                 </div>
           </form>
         </div>
@@ -202,35 +173,35 @@ figure figcaption {
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 class="modal-title" id="myModalLabel">Edit Barang</h3>
             </div>
-            <form class="form-horizontal">
+            <form class="form-horizontal" id="update">
                 <div class="modal-body">
+
+                <div class="form-group">
+                        <label class="control-label col-xs-3" >Kode Barang</label>
+                        <div class="col-xs-9">
+                            <input name="kode" id="nama_produk2" class="form-control" type="text" placeholder="Nama Barang" style="width:335px;" readonly>
+                        </div>
+                </div>
  
                 <div class="form-group">
                   <label class="control-label col-xs-3">Gambar</label>
                   <div class="col-xs-9">
-                  
+                    <input type="file" name="file" id="gambar" class="form-control" style="width:335px;" required>
                   </div> 
                 </div>
 
-
-                    <div class="form-group">
-                        <label class="control-label col-xs-3" >Kode Barang</label>
-                        <div class="col-xs-9">
-                            <input name="kodeedit" id="kode_produk2" class="form-control" type="text" placeholder="Kode Barang" style="width:335px;" required>
-                        </div>
-                    </div>
  
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Nama Barang</label>
                         <div class="col-xs-9">
-                            <input name="namaedit" id="nama_produk2" class="form-control" type="text" placeholder="Nama Barang" style="width:335px;" required>
+                            <input name="nama" id="nama_produk2" class="form-control" type="text" placeholder="Nama Barang" style="width:335px;" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                       <label class="control-label col-xs-3">Kategori</label>
                       <div class="col-xs-9">
-                      <select class="form-control select2 select2-hidden-accessible" name="kategoriedit" id="kategori2" style="width:335px;" tabindex="-1" aria-hidden="true">
+                      <select class="form-control select2 select2-hidden-accessible" name="kategori" id="kategori2" style="width:335px;" tabindex="-1" aria-hidden="true">
                         <option selected="selected">Pilih</option>
                         <option>Makanan</option>
                         <option>Minuman</option>
@@ -242,28 +213,28 @@ figure figcaption {
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Harga Modal</label>
                         <div class="col-xs-9">
-                            <input name="modaledit" id="modal2" class="form-control" type="text" placeholder="Harga Modal" style="width:335px;" required>
+                            <input name="modal" id="modal2" class="form-control" type="text" placeholder="Harga Modal" style="width:335px;" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Harga Jual</label>
                         <div class="col-xs-9">
-                            <input name="jualedit" id="jual2" class="form-control" type="text" placeholder="Harga Jual" style="width:335px;" required>
+                            <input name="jual" id="jual2" class="form-control" type="text" placeholder="Harga Jual" style="width:335px;" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Stok</label>
                         <div class="col-xs-9">
-                            <input name="stokedit" id="stok2" class="form-control" type="text" placeholder="Stok" style="width:335px;" required>
+                            <input name="stok" id="stok2" class="form-control" type="text" placeholder="Stok" style="width:335px;" required>
                         </div>
                     </div>
 
                 <div class="form-group">
                   <label class="control-label col-xs-3">Deskripsi</label>
                   <div class="col-xs-9">
-                  <textarea class="form-control" name="deskripsiedit" id="deskripsi2" rows="3" placeholder="Deskripsi ..."></textarea>
+                  <textarea class="form-control" name="deskripsi" id="deskripsi2" rows="3" placeholder="Deskripsi ..."></textarea>
                   </div>
                 </div>
  
@@ -271,7 +242,7 @@ figure figcaption {
  
                 <div class="modal-footer">
                     <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
-                    <button class="btn btn-info" id="btn_update">Update</button>
+                    <button type="submit" class="btn btn-info" id="btn_update">Update</button>
                 </div>
             </form>
             </div>
@@ -365,7 +336,7 @@ figure figcaption {
         //fungsi tampil barang
         function tampil_data_produk(){
             $.ajax({
-                type  : 'ajax',
+                type  : 'AJAX',
                 url   : '<?php echo base_url()?>index.php/produk/data_produk',
                 async : false,
                 dataType : 'json',
@@ -375,7 +346,7 @@ figure figcaption {
                     for(i=0; i<data.length; i++){
                         html += '<tr>'+
                                 '<td>'+data[i].id_produk+'</td>'+
-                                '<td><img src="<?=base_url()?>assets/image/'+data[i].gambar_produk+'"/></td>'+
+                                '<td><img src="<?=base_url()?>assets/images/produk/800x800/'+data[i].gambar_produk+'" width="50px"/></td>'+
                                 '<td>'+data[i].nama_produk+'</td>'+
                                 '<td>'+data[i].id_kategori+'</td>'+
                                 '<td>'+data[i].harga_modal+'</td>'+
@@ -405,14 +376,14 @@ figure figcaption {
                 success: function(data){
                     $.each(data,function(id_produk,nama_produk,kategori_produk,harga_modal,harga_jual,stok_produk,deskripsi_produk,gambar_produk){
                         $('#ModalaEdit').modal('show');
-                        $('[name="kodeedit"]').val(data.id_produk);
-                        $('[name="namaedit"]').val(data.nama_produk);
-                        $('[name="kategoriedit"] option').eq(data.id_kategori).prop('selected', true);
-                        $('[name="modaledit"]').val(data.harga_modal);
-                        $('[name="jualedit"]').val(data.harga_jual);
-                        $('[name="stokedit"]').val(data.stok_produk);
-                        $('[name="deskripsiedit"]').val(data.deskripsi_produk);
-                        $('[name="gambaredit"]').val(data.gambar_produk);
+                        $('[name="kode"]').val(data.id_produk);
+                        $('[name="nama"]').val(data.nama_produk);
+                        $('[name="kategori"] option').eq(data.id_kategori).prop('selected', true);
+                        $('[name="modal"]').val(data.harga_modal);
+                        $('[name="jual"]').val(data.harga_jual);
+                        $('[name="stok"]').val(data.stok_produk);
+                        $('[name="deskripsi"]').val(data.deskripsi_produk);
+                        $('[name="gambar"]').val(data.gambar_produk);
                     });
                 }
             });
@@ -428,29 +399,35 @@ figure figcaption {
         });
  
         //Simpan Barang
-        $('#btn_simpan').on('click',function(){
-            var kode=$('#kode_produk').val();
-            var nama=$('#nama_produk').val();
-            var kategori=$('#kategori option:selected').index();
-            var modal=$('#modal').val();
-            var jual=$('#jual').val();
-            var stok=$('#stok').val();
-            var deskripsi=$('#deskripsi').val();
-            var gambar=$('#gambar').val();
+        // $('#btn_simpan').on('click',function(){
+            $('#submit').submit(function(e){
+            // var kode=$('#kode_produk').val();
+            // var nama=$('#nama_produk').val();
+            // var kategori=$('#kategori option:selected').index();
+            // var modal=$('#modal').val();
+            // var jual=$('#jual').val();
+            // var stok=$('#stok').val();
+            // var deskripsi=$('#deskripsi').val();
+            // var gambar=$('#gambar').val();
+            e.preventDefault();
             $.ajax({
                 type : "POST",
                 url  : "<?php echo base_url('index.php/produk/simpan_produk')?>",
                 dataType : "JSON",
-                data : {kode:kode, nama:nama, kategori:kategori, modal:modal, jual:jual, stok:stok, deskripsi:deskripsi, gambar:gambar},
+                data : new FormData(this),//{kode:kode, nama:nama, kategori:kategori, modal:modal, jual:jual, stok:stok, deskripsi:deskripsi, gambar:gambar},
+                processData:false,
+                contentType:false,
+                cache:false,
+                async:false,
                 success: function(data){
                     $('[name="kode"]').val("");
                     $('[name="nama"]').val("");
-                    $('[name="kategori"] option').eq(0).prop('selected', true);
+                    // $('[name="kategori"] option').eq(0).prop('selected', true);
                     $('[name="modal"]').val("");
                     $('[name="jual"]').val("");
                     $('[name="stok"]').val("");
                     $('[name="deskripsi"]').val("");
-                    $('[name="gambar"]').val("");
+                    // $('[name="gambar"]').val("");
                     $('#ModalaAdd').modal('hide');
                     tampil_data_produk();
                 }
@@ -459,29 +436,26 @@ figure figcaption {
         });
  
         //Update Barang
-        $('#btn_update').on('click',function(){
-            var kode=$('#kode_produk2').val();
-            var nama=$('#nama_produk2').val();
-            var kategori=$('#kategori2 option:selected').index();
-            var modal=$('#modal2').val();
-            var jual=$('#jual2').val();
-            var stok=$('#stok2').val();
-            var deskripsi=$('#deskripsi2').val();
-            var gambar=$('#gambar2').val();
+        $('#update').submit(function(e){
+            // var kode=$('#kode_produk2').val();
+            // var nama=$('#nama_produk2').val();
+            // var kategori=$('#kategori2 option:selected').index();
+            // var modal=$('#modal2').val();
+            // var jual=$('#jual2').val();
+            // var stok=$('#stok2').val();
+            // var deskripsi=$('#deskripsi2').val();
+            // var gambar=$('#gambar2').val();
+            e.preventDefault();
             $.ajax({
                 type : "POST",
                 url  : "<?php echo base_url('index.php/produk/update_produk')?>",
                 dataType : "JSON",
-                data : {kode:kode, nama:nama, kategori:kategori, modal:modal, jual:jual, stok:stok, deskripsi:deskripsi, gambar:gambar},
+                data :new FormData(this),// {kode:kode, nama:nama, kategori:kategori, modal:modal, jual:jual, stok:stok, deskripsi:deskripsi, gambar:gambar},
+                processData:false,
+                contentType:false,
+                cache:false,
+                async:false,
                 success: function(data){
-                    // $('[name="kode"]').val("");
-                    // $('[name="nama"]').val("");
-                    // $('[name="kategori"] option').eq(0).prop('selected', true);
-                    // $('[name="modal"]').val("");
-                    // $('[name="jual"]').val("");
-                    // $('[name="stok"]').val("");
-                    // $('[name="deskripsi"]').val("");
-                    // $('[name="gambar"]').val("");
                     $('#ModalaEdit').modal('hide');
                     tampil_data_produk();
                 }

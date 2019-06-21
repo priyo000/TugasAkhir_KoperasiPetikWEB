@@ -36,7 +36,7 @@
         }
 
         function update_produk($kode,$nama,$kategori,$modal,$jual,$stok,$deskripsi,$gambar){
-            $hasil=$this->db->query("UPDATE tb_produk SET id_produk='$kode',nama_produk='$nama',harga_modal='$modal',harga_jual='$jual',id_kategori='$kategori',stok_produk='$stok',deskripsi_produk='$deskripsi',gambar_produk='$gambar' WHERE id_produk='$kode'");
+            $hasil=$this->db->query("UPDATE tb_produk SET nama_produk='$nama',harga_modal='$modal',harga_jual='$jual',id_kategori='$kategori',stok_produk='$stok',deskripsi_produk='$deskripsi',gambar_produk='$gambar' WHERE id_produk='$kode'");
             return $hasil;
         }
 
