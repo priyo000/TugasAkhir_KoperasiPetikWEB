@@ -37,8 +37,17 @@
         <li><a href="#">Tables</a></li>
         <li class="active">Data tables</li>
       </ol>
+      <section class="content-header">
+      <h1>
+        Data Tables
+        <small>advanced tables</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Tables</a></li>
+        <li class="active">Data tables</li>
+      </ol>
     </section>
-
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -46,437 +55,23 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Hover Data Table</h3>
+              <div class="pull-right"><a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#ModalaAdd"><span class="fa fa-plus"></span> Tambah Barang</a></div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
+              <table id="example1" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
+                  <!-- <th>Kode</th> -->
+                  <th>Kode Order</th>
+                  <th>Username</th>
+                  <th>Waktu Order</th>
+                  <th>Transaksi</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5.5</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 6
-                  </td>
-                  <td>Win 98+</td>
-                  <td>6</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet Explorer 7</td>
-                  <td>Win XP SP2+</td>
-                  <td>7</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>AOL browser (AOL desktop)</td>
-                  <td>Win XP</td>
-                  <td>6</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Firefox 1.0</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.7</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Firefox 1.5</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Firefox 2.0</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Firefox 3.0</td>
-                  <td>Win 2k+ / OSX.3+</td>
-                  <td>1.9</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Camino 1.0</td>
-                  <td>OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Camino 1.5</td>
-                  <td>OSX.3+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Netscape 7.2</td>
-                  <td>Win 95+ / Mac OS 8.6-9.2</td>
-                  <td>1.7</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Netscape Browser 8</td>
-                  <td>Win 98SE+</td>
-                  <td>1.7</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Netscape Navigator 9</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.0</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.1</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.1</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.2</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.2</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.3</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.3</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.4</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.4</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.5</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.5</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.6</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.6</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.7</td>
-                  <td>Win 98+ / OSX.1+</td>
-                  <td>1.7</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.8</td>
-                  <td>Win 98+ / OSX.1+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Seamonkey 1.1</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Epiphany 2.20</td>
-                  <td>Gnome</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 1.2</td>
-                  <td>OSX.3</td>
-                  <td>125.5</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 1.3</td>
-                  <td>OSX.3</td>
-                  <td>312.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 2.0</td>
-                  <td>OSX.4+</td>
-                  <td>419.3</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 3.0</td>
-                  <td>OSX.4+</td>
-                  <td>522.1</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>OmniWeb 5.5</td>
-                  <td>OSX.4+</td>
-                  <td>420</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>iPod Touch / iPhone</td>
-                  <td>iPod</td>
-                  <td>420.1</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>S60</td>
-                  <td>S60</td>
-                  <td>413</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 7.0</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 7.5</td>
-                  <td>Win 95+ / OSX.2+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 8.0</td>
-                  <td>Win 95+ / OSX.2+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 8.5</td>
-                  <td>Win 95+ / OSX.2+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 9.0</td>
-                  <td>Win 95+ / OSX.3+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 9.2</td>
-                  <td>Win 88+ / OSX.3+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 9.5</td>
-                  <td>Win 88+ / OSX.3+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera for Wii</td>
-                  <td>Wii</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Nokia N800</td>
-                  <td>N800</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Nintendo DS browser</td>
-                  <td>Nintendo DS</td>
-                  <td>8.5</td>
-                  <td>C/A<sup>1</sup></td>
-                </tr>
-                <tr>
-                  <td>KHTML</td>
-                  <td>Konqureror 3.1</td>
-                  <td>KDE 3.1</td>
-                  <td>3.1</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>KHTML</td>
-                  <td>Konqureror 3.3</td>
-                  <td>KDE 3.3</td>
-                  <td>3.3</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>KHTML</td>
-                  <td>Konqureror 3.5</td>
-                  <td>KDE 3.5</td>
-                  <td>3.5</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Tasman</td>
-                  <td>Internet Explorer 4.5</td>
-                  <td>Mac OS 8-9</td>
-                  <td>-</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Tasman</td>
-                  <td>Internet Explorer 5.1</td>
-                  <td>Mac OS 7.6-9</td>
-                  <td>1</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Tasman</td>
-                  <td>Internet Explorer 5.2</td>
-                  <td>Mac OS 8-X</td>
-                  <td>1</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>NetFront 3.1</td>
-                  <td>Embedded devices</td>
-                  <td>-</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>NetFront 3.4</td>
-                  <td>Embedded devices</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Dillo 0.8</td>
-                  <td>Embedded devices</td>
-                  <td>-</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Links</td>
-                  <td>Text only</td>
-                  <td>-</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Lynx</td>
-                  <td>Text only</td>
-                  <td>-</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>IE Mobile</td>
-                  <td>Windows Mobile 6</td>
-                  <td>-</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>PSP browser</td>
-                  <td>PSP</td>
-                  <td>-</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Other browsers</td>
-                  <td>All others</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>U</td>
-                </tr>
+                <tbody id="show_data">
+                
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                </tr>
-                </tfoot>
               </table>
             </div>
             <!-- /.box-body -->
@@ -489,6 +84,149 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
+    <!-- modal -->
+    <div class="modal fade" id="ModalaAdd" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 class="modal-title" id="myModalLabel">Tambah Produk</h3>
+            </div>
+            <form class="form-horizontal" id="submit">
+                <div class="modal-body">
+                
+                <div class="form-group">
+                  <label class="control-label col-xs-3">Gambar</label>
+                  <div class="col-xs-9">
+                  <input type="file" name="file" id="gambar" class="form-control" style="width:335px;" required>
+                  </div> 
+                </div>
+
+
+                    <!-- <div class="form-group">
+                        <label class="control-label col-xs-3" >Kode Barang</label>
+                        <div class="col-xs-9">
+                            <input name="kode" id="kode_produk" class="form-control" type="text" placeholder="Kode Barang" style="width:335px;" required>
+                        </div>
+                    </div> -->
+ 
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Nama Barang</label>
+                        <div class="col-xs-9">
+                            <input name="nama" id="nama_produk" class="form-control" type="text" placeholder="Nama Barang" style="width:335px;" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-xs-3">Kategori</label>
+                      <div class="col-xs-9">
+                      <!-- <input name="kategori" id="nama_produk" class="form-control" type="text" placeholder="Nama Barang" style="width:335px;" required> -->
+                      <select class="form-control select2 select2-hidden-accessible" name="kategori" id="kategori" style="width:335px;" tabindex="-1" aria-hidden="true">
+                        <option selected="selected">Pilih</option>
+                        <option>Makanan</option>
+                        <option>Minuman</option>
+                        <option>DLL</option>
+                      </select>
+                      </div>
+                  </div>
+ 
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Harga Modal</label>
+                        <div class="col-xs-9">
+                            <input name="modal" id="modal" class="form-control" type="text" placeholder="Harga Modal" style="width:335px;" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Harga Jual</label>
+                        <div class="col-xs-9">
+                            <input name="jual" id="jual" class="form-control" type="text" placeholder="Harga Jual" style="width:335px;" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Stok</label>
+                        <div class="col-xs-9">
+                            <input name="stok" id="stok" class="form-control" type="text" placeholder="Stok" style="width:335px;" required>
+                        </div>
+                    </div>
+
+                <div class="form-group">
+                  <label class="control-label col-xs-3">Deskripsi</label>
+                  <div class="col-xs-9">
+                  <textarea class="form-control" name="deskripsi" id="deskripsi" rows="3" placeholder="Deskripsi ..."></textarea>
+                  </div>
+                </div>
+ 
+                </div>
+ 
+                <div class="modal-footer">
+            
+                </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+        <!-- MODAL EDIT -->
+        <div class="modal fade" id="ModalaEdit" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 class="modal-title" id="myModalLabel">Edit Barang</h3>
+            </div>
+            <table id="example1" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  
+                  <th>Nama Barang</th>
+                  <th>Qty</th>
+                  <th>Total Harga</th>
+                  
+                </tr>
+                </thead>
+                <tbody id="rincian">
+                
+                </tbody>
+              </table>
+            <div class="modal-footer">
+                <button class="btn_hapus btn btn-success" style="width: 500px" id="btnkonfirmasi" data="">Konfirmasi</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+            </div>
+            </div>
+            </div>
+        </div>
+        <!--END MODAL EDIT-->
+        <!--MODAL HAPUS-->
+        <div class="modal fade" id="ModalaHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Hapus Order</h4>
+                    </div>
+                    <form class="form-horizontal">
+                    <div class="modal-body">
+                                           
+                            <input type="hidden" name="idorder" id="idorderHapus" value="">
+                            <div class="alert alert-warning"><p>Apakah Anda yakin mau Membatalkan Order ini?</p></div>                 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                        <button class="btn_hapus btn btn-danger" id="btnhapus">Hapus</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--END MODAL HAPUS-->
+
+        
+                
+
+
+    <!-- akhir modal -->
   </div>
   </div>
   <?php $this->load->view('admin/_part/footer.php')?>
@@ -498,16 +236,124 @@
 
 <script>
   $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
+    $('#example2').DataTable()
+    $('#example1').DataTable({
       'paging'      : true,
       'lengthChange': false,
-      'searching'   : false,
+      'searching'   : true,
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : false
     })
   })
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        tampil_data_order();   //pemanggilan fungsi tampil barang.
+         
+        $('#mydata').dataTable();
+          
+        //fungsi tampil barang
+        function tampil_data_order(){
+            $.ajax({
+                type  : 'AJAX',
+                url   : '<?php echo base_url()?>index.php/penjualan/data_order',
+                async : false,
+                dataType : 'json',
+                success : function(data){
+                    var html = '';
+                    var i;
+                    for(i=0; i<data.length; i++){
+                        html += '<tr>'+
+                                '<td>'+data[i].id_order+'</td>'+
+                                '<td>'+data[i].username+'</td>'+
+                                '<td>'+data[i].waktu_order+'</td>'+
+                                '<td style="text-align:right;">'+
+                                    '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="'+data[i].id_order+'">Rincian</a>'+' '+
+                                    '<a href="javascript:;" class="btn btn-danger btn-xs item_hapus" data="'+data[i].id_order+'">Hapus</a>'+
+                                '</td>'+
+                                '</tr>';
+                    }
+                    $('#show_data').html(html);
+                }
+ 
+            });
+        }
+ 
+        //GET UPDATE
+        $('#show_data').on('click','.item_edit',function(){
+            var id=$(this).attr('data');
+            $.ajax({
+                type : "GET",
+                url  : "<?php echo base_url('index.php/penjualan/get_detail_order')?>",
+                dataType : "JSON",
+                data : {id_order:id},
+                success: function(data,){
+                    var oh = '';
+                    $.each(data,function(i,nama_produk,kuantitas,total_harga){
+                        // alert(data[i].nama_produk);
+                        oh += '<tr>'+
+                                '<td>'+data[i].nama_produk+'</td>'+
+                                '<td>'+data[i].kuantitas+'</td>'+
+                                '<td>'+data[i].total_harga+'</td>'+
+                                '<td style="text-align:right;">'+
+                                    // '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="'+data.id_order+'">Rincian</a>'+
+                                '</td>'+
+                                '</tr>';
+                                  
+            });
+            $('#rincian').html(oh);
+            $('#ModalaEdit').modal('show');
+        }
+      });
+      return false;
+    });
+ 
+ 
+        //GET HAPUS
+        $('#show_data').on('click','.item_hapus',function(){
+            var id=$(this).attr('data');
+            $('#ModalaHapus').modal('show');
+            $('[name="idorder"]').val(id);
+            // alert($('#idorderHapus').val());
+        });
+ 
+        //Update Barang
+        $('#btnkonfirmasi').on('click',function(){
+            var idorder=$('#btnkonfirmasi').attr('data');
+            // alert(idorder);
+            $.ajax({
+            type : "POST",
+            url  : "<?php echo base_url('index.php/penjualan/konfirmasi')?>",
+            dataType : "JSON",
+                    data : {idorder: idorder},
+                    success: function(data){
+                            $('#ModalaEdit').modal('hide');
+                            tampil_data_order();
+                    }
+                });
+                return false;
+            });
+ 
+        //Hapus Barang
+        $('#btnhapus').on('click',function(){
+            var kode=$('#idorderHapus').val();
+            // alert(kode);
+            $.ajax({
+            type : "POST",
+            url  : "<?php echo base_url('index.php/penjualan/hapus_order')?>",
+            dataType : "JSON",
+                    data : {idorder: kode},
+                    success: function(data){
+                            $('#ModalaHapus').modal('hide');
+                            tampil_data_order();
+                    }
+                });
+                return false;
+            });
+ 
+    });
+ 
 </script>
 </body>
 </html>
