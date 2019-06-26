@@ -60,6 +60,7 @@
                                         '<h5 class="" >Harga : Rp.<span>'+data[i].harga_jual+'</span></h5>'+
                                         '<form class="tambah_cart">'+
                                         '<input type="hidden" name="idproduk" step="1" value="'+data[i].id_produk+'">'+
+                                        '<input type="hidden" name="pnt" value="'+data[i].harga_modal+'">'+
                                         '<input type="hidden" name="hrg" value="'+data[i].harga_jual+'">'+
                                         '<input type="number" name="qty" min="1" step="1" style="width:50px;" value="1">'+
                                         '<button type="submit" class="btn btn-danger pull-right" data="'+data[i].id_produk+'">Masukkan Keranjang</button>'+

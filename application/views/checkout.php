@@ -65,12 +65,16 @@
                 </tbody>
                 <tfoot>
                   <tr>
-                    <th colspan="4">TOTAL</th>
+                    <th colspan="4">TOTAL DENGAN SALDO </th>
                     <th class="totalcart"></th>
+                  </tr>
+                  <tr>
+                    <th colspan="4">TOTAL DENGAN POINT</th>
+                    <th class="totalcart2"></th>
                   </tr>
                 </tfoot>
               </table>
-              <div id="checkout_saldo">
+              <div id="bayar" class="pull-right">
 
               </div>
             </div>
@@ -114,10 +118,14 @@
                 dataType : 'json',
                 success : function(data){
                     var html = '';
+                    var bayar ='<a href="<?=base_url()?>index.php/cart/byr_saldo?'+data[0].id_order+'" class="btn btn-danger" style="margin-right:10px;">Bayar Menggunakan Saldo</a>'+
+                              '<a href="<?=base_url()?>index.php/cart/byr_point?'+data[0].id_order+'" class="btn btn-warning">Bayar Menggunakan Point</a>';
                     var i;
-                    $total=0;
+                    var total=0;
+                    var total2=0;
                     for(i=0; i<data.length; i++){
-                        $total+=Number(data[i].total_harga);
+                        total+=Number(data[i].total_harga);
+                        total2+=Number(data[i].total_harga2);
                         html += '<tr>'+
                                 '<td><img class="" width="50px" height="50px" src="<?=base_url()?>/assets/images/produk/800x800/'+data[i].gambar_produk+'" alt="User Avatar"></td>'+
                                 '<td>'+data[i].nama_produk+'</td>'+
@@ -129,9 +137,11 @@
                                 '</td>'+
                                 '</tr>';
                     }
-                    $('.totalcart').html($total);
+                    alert(data[0].total_harga2);
+                    $('.totalcart').html(total);
+                    $('.totalcart2').html(total2);
                     $('.cart').html(html);
-                    $('#checkout_saldo').html('<a href="<?=base_url()?>index.php/cart/pw_saldo?'+data[0].id_order+'" class="btn btn-danger">CHECK OUT</a>');
+                    $('#bayar').html(bayar);
                 }
  
             });

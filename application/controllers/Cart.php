@@ -43,10 +43,12 @@ class Cart extends CI_Controller {
         $cek=$this->M_cart->cek_keranjang($_SESSION['id_user']);
         $idproduk=$this->input->post('idproduk');
         $qty=$this->input->post('qty');
+        $pnt=$this->input->post('pnt');
         $hrg=$this->input->post('hrg');
         $ttl=$qty*$hrg;
+        $ttl2=$qty*$pnt;
         if (count($cek)>0) {
-            $this->M_cart->tambah_isi($cek[0]->id_order,$idproduk,$qty,$ttl);
+            $this->M_cart->tambah_isi($cek[0]->id_order,$idproduk,$qty,$ttl,$ttl2);
         }else{
             $idorder=time();
             $this->M_cart->buat_keranjang($idorder,$_SESSION['id_user']);
