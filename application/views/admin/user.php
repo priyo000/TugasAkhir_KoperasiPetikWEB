@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>User</title>
-    <?php $this->load->view('admin/_part/cssjs.php')?>
+    <?php $this->load->view('_part/cssjs.php')?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-    <?php $this->load->view('admin/_part/navbar.php') ?>
-    <?php $this->load->view('admin/_part/sidebar.php')?>
+    <?php $this->load->view('_part/navbar.php') ?>
+    <?php $this->load->view('_part/sidebar.php')?>
     <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -99,10 +99,10 @@
 
     <!-- /.content -->
   </div>
-    <?php $this->load->view('admin/_part/footer.php')?>
+    <?php $this->load->view('_part/footer.php')?>
     
 </div>
-<?php $this->load->view('admin/_part/js.php')?>
+<?php $this->load->view('_part/js.php')?>
 <script type="text/javascript">
     $(document).ready(function(){
         tampil_data_user();

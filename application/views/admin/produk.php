@@ -7,7 +7,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
-  <?php $this->load->view('admin/_part/cssjs.php')?>
+  <?php $this->load->view('_part/cssjs.php')?>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,8 +23,8 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-    <?php $this->load->view('admin/_part/navbar.php') ?>
-    <?php $this->load->view('admin/_part/sidebar.php')?>
+    <?php $this->load->view('_part/navbar.php') ?>
+    <?php $this->load->view('_part/sidebar.php')?>
     <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <!-- Main content -->
@@ -309,8 +309,8 @@
     <!-- akhir modal -->
   </div>
   </div>
-  <?php $this->load->view('admin/_part/footer.php')?>
-  <?php $this->load->view('admin/_part/js.php')?>
+  <?php $this->load->view('_part/footer.php')?>
+  <?php $this->load->view('_part/js.php')?>
 <script src="<?=base_url()?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?=base_url()?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
@@ -354,7 +354,7 @@
                                 '<td>'+data[i].stok_produk+'</td>'+
                                 '<td>'+data[i].terjual+'</td>'+
                                 '<td style="text-align:right;">'+
-                                    '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="'+data[i].id_produk+'">Edit</a>'+' '+
+                                    '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="'+data[i].id_produk+'">Edit</a>'+
                                     '<a href="javascript:;" class="btn btn-danger btn-xs item_hapus" data="'+data[i].id_produk+'">Hapus</a>'+
                                 '</td>'+
                                 '</tr>';
@@ -437,14 +437,6 @@
  
         //Update Barang
         $('#update').submit(function(e){
-            // var kode=$('#kode_produk2').val();
-            // var nama=$('#nama_produk2').val();
-            // var kategori=$('#kategori2 option:selected').index();
-            // var modal=$('#modal2').val();
-            // var jual=$('#jual2').val();
-            // var stok=$('#stok2').val();
-            // var deskripsi=$('#deskripsi2').val();
-            // var gambar=$('#gambar2').val();
             e.preventDefault();
             $.ajax({
                 type : "POST",

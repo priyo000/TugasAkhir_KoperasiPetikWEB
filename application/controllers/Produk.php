@@ -27,7 +27,6 @@ class Produk extends CI_Controller {
         $kode=$this->input->get('id');
         $data=$this->M_produk->get_produk_byid($kode);
         echo json_encode($data);
-        
     }
     
     function simpan_produk(){

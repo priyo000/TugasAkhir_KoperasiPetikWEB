@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Products</title>
     <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-    <?php $this->load->view('admin/_part/cssjs.php')?>
+    <?php $this->load->view('_part/cssjs.php')?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-    <?php $this->load->view('admin/_part/navbar.php') ?>
-    <?php $this->load->view('admin/_part/sidebar.php')?>
+    <?php $this->load->view('_part/navbar.php') ?>
+    <?php $this->load->view('_part/sidebar.php')?>
     <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -910,9 +910,9 @@
     </section>
     <!-- /.content -->
   </div>
-    <?php $this->load->view('admin/_part/footer.php')?>   
+    <?php $this->load->view('_part/footer.php')?>   
 </div>
-<?php $this->load->view('admin/_part/js.php')?>
+<?php $this->load->view('_part/js.php')?>
 <script src="<?=base_url()?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?=base_url()?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 

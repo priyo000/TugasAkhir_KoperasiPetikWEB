@@ -7,7 +7,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
-  <?php $this->load->view('admin/_part/cssjs.php')?>
+  <?php $this->load->view('_part/cssjs.php')?>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,8 +22,8 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-    <?php $this->load->view('admin/_part/navbar.php') ?>
-    <?php $this->load->view('admin/_part/sidebar.php')?>
+    <?php $this->load->view('_part/navbar.php') ?>
+    <?php $this->load->view('_part/sidebar.php')?>
     <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <!-- Main content -->
@@ -130,8 +130,8 @@
         <!--END MODAL HAPUS-->
   </div>
   </div>
-  <?php $this->load->view('admin/_part/footer.php')?>
-  <?php $this->load->view('admin/_part/js.php')?>
+  <?php $this->load->view('_part/footer.php')?>
+  <?php $this->load->view('_part/js.php')?>
 <script src="<?=base_url()?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?=base_url()?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
@@ -241,7 +241,7 @@ $(document).ready(function(){
         //Hapus Barang
         $('#btnhapus').on('click',function(){
             var kode=$('#idorderHapus').val();
-            alert(kode);
+            // alert(kode);
             $.ajax({
             type : "POST",
             url  : "<?php echo base_url('index.php/penjualan/hapus_order')?>",

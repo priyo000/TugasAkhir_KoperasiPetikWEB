@@ -8,6 +8,16 @@ class M_penjualan extends CI_Model {
         return $hasil->result();
     }
 
+    function get_order($idakun){
+        $hasil=$this->db->query("SELECT * FROM tb_order WHERE id_akun='$idakun' && id_status='1'");
+        return $hasil->result();
+    }
+
+    function get_riwayat($idakun){
+        $hasil=$this->db->query("SELECT * FROM tb_order WHERE id_akun='$idakun' && id_status='2'");
+        return $hasil->result();
+    }
+
     function get_detailorder_byid($idorder){
         $hasil=$this->db->query("SELECT tb_detail_order.*, tb_order.waktu_order, tb_order.id_akun, tb_akuns.username, tb_produk.nama_produk FROM tb_detail_order INNER JOIN tb_order ON tb_detail_order.id_order=tb_order.id_order INNER JOIN tb_akuns ON tb_order.id_akun=tb_akuns.id_akun INNER JOIN tb_produk ON tb_detail_order.id_produk=tb_produk.id_produk WHERE tb_detail_order.id_order='$idorder'");
         if ($hasil->num_rows()>0) {

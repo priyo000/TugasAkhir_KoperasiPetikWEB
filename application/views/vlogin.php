@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Products</title>
     <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-    <?php $this->load->view('admin/_part/cssjs.php')?>
+    <?php $this->load->view('_part/cssjs.php')?>
     <style>
         .login-container{
     margin-top: 5%;
@@ -67,13 +67,13 @@
 <div class="container login-container">
             <div class="row">
                 <div class="col-md-6 login-form-1">
-                    <h3>Login for Form 1</h3>
-                    <form>
+                    <h3>Login</h3>
+                    <form action="<?php echo base_url()?>index.php/login/aut" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Email *" value="" />
+                            <input type="text" name="id" class="form-control" placeholder="Your Email *" value="" />
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Your Password *" value="" />
+                            <input type="password" name="pass" class="form-control" placeholder="Your Password *" value="" />
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btnSubmit" value="Login" />
@@ -88,9 +88,9 @@
                 </div>
             </div>
         </div>
-    <?php $this->load->view('admin/_part/footer.php')?>   
+    <?php $this->load->view('_part/footer.php')?>   
 </div>
-<?php $this->load->view('admin/_part/js.php')?>
+<?php $this->load->view('_part/js.php')?>
 <script src="<?=base_url()?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 </body>
 </html>
