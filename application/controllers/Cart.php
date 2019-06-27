@@ -57,19 +57,36 @@ class Cart extends CI_Controller {
     }
     function bayar_saldo()
     {
-        $id=$this->input->post('id_dorder');
-        $qty=$this->input->post('qty');
-        $st=$this->input->post('subtotal');
-        $isi=$this->M_cart->hapus_isi($id,$qty,$st);
-        // echo json_encode($isi);
+        $idorder=$this->input->get('id_order');
+        $jumlahbayar=$this->input->get('jml_saldo');
+
+        $ceksaldo=$this->M_user->get_akun($_SESSION['id_user']);
+            if($ceksaldo['saldo']>$jumlahbayar){
+                $byrsaldo=$ceksaldo['saldo']-$jumlahbayar;
+                $this->M_cart->byr_saldo($byrsaldo,$_SESSION['id_user']);
+                $this->M_cart->bayar($idorder);
+            }else{
+                $this->session->set_flashdata('saldokurang','<div class="alert alert-danger" role="alert">
+                Sorry Saldo ente Kurang!
+              </div>');
+            }
+        
     }
     function bayar_point()
     {
-        $id=$this->input->post('id_dorder');
-        $qty=$this->input->post('qty');
-        $st=$this->input->post('subtotal');
-        $isi=$this->M_cart->hapus_isi($id,$qty,$st);
-        // echo json_encode($isi);
+        $idorder=$this->input->get('id_order');
+        $jumlahbayar=$this->input->get('jml_point');
+
+        $ceksaldo=$this->M_user->get_akun($_SESSION['id_user']);
+            if($ceksaldo['point']>$jumlahbayar){
+                $byrpoint=$ceksaldo['point']-$jumlahbayar;
+                $this->M_cart->byr_point($byrpoint,$_SESSION['id_user']);
+                $this->M_cart->bayar($idorder);
+            }else{
+                $this->session->set_flashdata('saldokurang','<div class="alert alert-danger" role="alert">
+                Sorry Point ente Kurang!
+              </div>');
+            }
     }
 
 

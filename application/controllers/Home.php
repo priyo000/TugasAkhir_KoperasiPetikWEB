@@ -18,9 +18,7 @@ class Home extends CI_Controller {
     public function index()
     {
         $data["user"]=$this->M_user->get_akun($_SESSION['id_user']);
-        
         $this->load->view('home',$data);
-        
     }
     
 

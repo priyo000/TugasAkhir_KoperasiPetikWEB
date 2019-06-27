@@ -11,7 +11,7 @@
         apply the skin class to the body tag so the changes take effect. -->
   <link rel="stylesheet" href="<?=base_url()?>assets/dist/css/skins/skin-blue.min.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/croppie/croppie.css">
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8.13.0/dist/sweetalert2.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -49,6 +49,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              <?= $this->session->flashdata('saldokurang')?>
             <table id="xxx" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -118,8 +119,7 @@
                 dataType : 'json',
                 success : function(data){
                     var html = '';
-                    var bayar ='<a href="<?=base_url()?>index.php/cart/byr_saldo?'+data[0].id_order+'" class="btn btn-danger" style="margin-right:10px;">Bayar Menggunakan Saldo</a>'+
-                              '<a href="<?=base_url()?>index.php/cart/byr_point?'+data[0].id_order+'" class="btn btn-warning">Bayar Menggunakan Point</a>';
+                    var bayar ="";
                     var i;
                     var total=0;
                     var total2=0;
@@ -137,7 +137,8 @@
                                 '</td>'+
                                 '</tr>';
                     }
-                    alert(data[0].total_harga2);
+                    bayar ='<a href="<?=base_url()?>index.php/cart/bayar_saldo?id_order='+data[0].id_order+'&jml_saldo='+total+'" class="btn btn-danger" style="margin-right:10px;">Bayar Menggunakan Saldo</a>'+
+                            '<a href="<?=base_url()?>index.php/cart/bayar_point?id_order='+data[0].id_order+'&jml_point='+total2+'" class="btn btn-warning">Bayar Menggunakan Point</a>';
                     $('.totalcart').html(total);
                     $('.totalcart2').html(total2);
                     $('.cart').html(html);

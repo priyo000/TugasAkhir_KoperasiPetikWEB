@@ -81,6 +81,7 @@
                 async : false,
                 dataType : 'json',
                 success : function(data){
+                    $('.isi-cart').html(data.length);
                     var html = '';
                     var i;
                     $total=0;
@@ -91,7 +92,7 @@
                                 '<td>'+data[i].harga_jual+'</td>'+
                                 '<td>'+data[i].kuantitas+'</td>'+
                                 '<td>'+data[i].total_harga+'</td>'+
-                                '<td style="text-align:right;">'+
+                                '<td style="text-align:right; id="hapus_isi">'+
                                     '<button href="javascript:;" class="btn btn-danger btn-xs hapus_cart" data="'+data[i].id_detail_order+'">Hapus</button>'+
                                 '</td>'+
                                 '</tr>';
@@ -121,8 +122,8 @@
                 tampilkan_cart();
                 return false;
           });
-        
-        $('.hapus_cart').click(function() {
+
+        $('.cart').on('click','.hapus_cart',function(){
             var id= $(this).attr('data');
             $.ajax({
             type : "POST",
@@ -130,10 +131,10 @@
             dataType : "JSON",
             data : {id_dorder:id},
                 success: function(data){
-                    
+                    tampilkan_cart();
                 }
                 });
-                tampilkan_cart();
+                
                 return false;
           });
 

@@ -17,7 +17,7 @@ class M_cart extends CI_Model {
         return $hasil->result();
     }
     function hapus_isi($id){
-        $hasil=$this->db->query("DELETE FROM tb_detail_order WHERE id_detail_order=$id");
+        $hasil=$this->db->query("DELETE FROM tb_detail_order WHERE id_detail_order='$id'");
         return $hasil;
     }
     function update_isi($id,$qty,$subtotal){
@@ -31,8 +31,16 @@ class M_cart extends CI_Model {
 
     function bayar($idorder)
     {
-        $date=date("Y-m-d h:i:sa");
-        $hasil=$this->db->query("UPDATE tb_order SET id_status='1',waktu_order=$date WHERE id_order=$idorder");
+        $date=date("Y-m-d h:i:s");
+        $hasil=$this->db->query("UPDATE tb_order SET id_status='1',waktu_order='$date' WHERE id_order=$idorder");
+        return $hasil;
+    }
+    function byr_saldo($saldo,$akun){
+        $hasil=$this->db->query("UPDATE dompet SET saldo='$saldo' WHERE id_akun='$akun'");
+        return $hasil;
+    }
+    function byr_point($point,$akun){
+        $hasil=$this->db->query("UPDATE dompet SET point='$point' WHERE id_akun='$akun'");
         return $hasil;
     }
     // function get_order($idakun){

@@ -16,6 +16,7 @@ class Profil extends CI_Controller {
 
     public function index()
     {
+        
         $data["order"]=$this->M_penjualan->get_order($_SESSION['id_user']);
         $data["user"]=$this->M_user->get_akun($_SESSION['id_user']);
         $this->load->view('profil',$data);

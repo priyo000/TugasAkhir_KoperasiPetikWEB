@@ -44,7 +44,7 @@
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-shopping-cart"></i>
-              <span class="label label-warning">10</span>
+              <span class="isi-cart label label-warning"></span>
             </a>
             <ul class="dropdown-menu" style="width:500px;">
               <li class="header">Ini adalah Keranjang</li>
