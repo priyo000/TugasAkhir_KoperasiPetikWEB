@@ -35,10 +35,12 @@ class M_cart extends CI_Model {
         $hasil=$this->db->query("UPDATE tb_order SET id_status='1',waktu_order='$date' WHERE id_order=$idorder");
         return $hasil;
     }
+
     function byr_saldo($saldo,$akun){
         $hasil=$this->db->query("UPDATE dompet SET saldo='$saldo' WHERE id_akun='$akun'");
         return $hasil;
     }
+    
     function byr_point($point,$akun){
         $hasil=$this->db->query("UPDATE dompet SET point='$point' WHERE id_akun='$akun'");
         return $hasil;

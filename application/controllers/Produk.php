@@ -8,11 +8,13 @@ class Produk extends CI_Controller {
     {   
         parent::__construct();
         $this->load->model('M_produk');
+        $this->load->model('M_user');
     }
 
     public function index()
     {
-        $this->load->view('admin/produk.php');
+        $data["user"]=$this->M_user->get_akun($_SESSION['id_user']);
+        $this->load->view('admin/produk.php',$data);
         
     }
 

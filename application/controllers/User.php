@@ -13,7 +13,8 @@ class User extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('admin/user.php');
+        $data["user"]=$this->M_user->get_akun($_SESSION['id_user']);
+        $this->load->view('admin/user.php',$data);
         
     }
 

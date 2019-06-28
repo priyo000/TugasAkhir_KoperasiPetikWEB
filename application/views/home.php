@@ -52,7 +52,9 @@
                         html += '<div class="col-md-2">'+
                                   '<div class="box box-widget widget-user">'+
                                       '<div class="widget-user-header" style="width:100%;height:100%;padding:0;">'+
+                                        '<a href="http://localhost/ta_priyo/index.php/detail_produk?id='+data[i].id_produk+'">'+
                                           '<img class="" width="100%" height="100%" src="<?=base_url()?>/assets/images/produk/800x800/'+data[i].gambar_produk+'" alt="User Avatar">'+
+                                        '</a>'+
                                       '</div>'+
                                       '<div class="box-footer" style="padding-top:10px;" >'+
                                       '<h3 class="" style="margin-top:0px;">'+data[i].nama_produk+'</h3>'+
@@ -81,24 +83,39 @@
                 async : false,
                 dataType : 'json',
                 success : function(data){
-                    $('.isi-cart').html(data.length);
+                  $('.isi-cart').html(data.length);
                     var html = '';
+                    var bayar ="";
                     var i;
-                    $total=0;
+                    var total=0;
+                    var total2=0;
                     for(i=0; i<data.length; i++){
-                        $total+=Number(data[i].total_harga);
+                      var idorder= data[0].id_order;
+                        total+=Number(data[i].total_harga);
+                        total2+=Number(data[i].total_harga2);
                         html += '<tr>'+
+                                '<td><img class="" width="50px" height="50px" src="<?=base_url()?>/assets/images/produk/800x800/'+data[i].gambar_produk+'" alt="User Avatar"></td>'+
                                 '<td>'+data[i].nama_produk+'</td>'+
                                 '<td>'+data[i].harga_jual+'</td>'+
                                 '<td>'+data[i].kuantitas+'</td>'+
                                 '<td>'+data[i].total_harga+'</td>'+
-                                '<td style="text-align:right; id="hapus_isi">'+
+                                '<td style="text-align:right;">'+
                                     '<button href="javascript:;" class="btn btn-danger btn-xs hapus_cart" data="'+data[i].id_detail_order+'">Hapus</button>'+
                                 '</td>'+
                                 '</tr>';
                     }
-                    $('.totalcart').html($total);
+                    bayar ='<form class="bayar">'+
+                      '<input type="hidden" name="id_order" value="'+idorder+'">'+
+                      '<input type="hidden" name="jml_saldo" value="'+total+'">'+
+                      '<input type="hidden" name="jml_point" value="'+total2+'">'+
+                      '<button class="btn btn-danger bayar_saldo" style="margin-right:10px;">Bayar Menggunakan Saldo</button>'+
+                      '<button class="btn btn-warning bayar_point" >Bayar Menggunakan Point</button>'+
+                    '</form>';
+
+                    $('.totalcart').html(total);
+                    $('.totalcart2').html(total2);
                     $('.cart').html(html);
+                    $('#bayar').html(bayar);
                 }
  
             });

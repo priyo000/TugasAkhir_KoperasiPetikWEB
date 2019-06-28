@@ -48,8 +48,8 @@
               <h3 class="box-title">Check Out</h3>
             </div>
             <!-- /.box-header -->
+            
             <div class="box-body">
-              <?= $this->session->flashdata('saldokurang')?>
             <table id="xxx" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -110,6 +110,8 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
+      <?= $this->session->flashdata('berhasilbayar')?>
+      <?= $this->session->flashdata('saldokurang')?>
         tampilkan_cart();
         function tampilkan_cart(){
             $.ajax({
@@ -118,12 +120,14 @@
                 async : false,
                 dataType : 'json',
                 success : function(data){
+                  $('.isi-cart').html(data.length);
                     var html = '';
                     var bayar ="";
                     var i;
                     var total=0;
                     var total2=0;
                     for(i=0; i<data.length; i++){
+                      var idorder= data[0].id_order;
                         total+=Number(data[i].total_harga);
                         total2+=Number(data[i].total_harga2);
                         html += '<tr>'+
@@ -137,8 +141,9 @@
                                 '</td>'+
                                 '</tr>';
                     }
-                    bayar ='<a href="<?=base_url()?>index.php/cart/bayar_saldo?id_order='+data[0].id_order+'&jml_saldo='+total+'" class="btn btn-danger" style="margin-right:10px;">Bayar Menggunakan Saldo</a>'+
-                            '<a href="<?=base_url()?>index.php/cart/bayar_point?id_order='+data[0].id_order+'&jml_point='+total2+'" class="btn btn-warning">Bayar Menggunakan Point</a>';
+                    bayar =
+                      '<button name="bayar_saldo" data="'+idorder+'" class="btn btn-danger bayar_saldo" style="margin-right:10px;">Bayar Menggunakan Saldo</button>'+
+                      '<button name="bayar_point" data="'+idorder+'" class="btn btn-warning bayar_point">Bayar Menggunakan Point</button>';
                     $('.totalcart').html(total);
                     $('.totalcart2').html(total2);
                     $('.cart').html(html);
@@ -167,7 +172,7 @@
                 return false;
           });
         
-        $('.hapus_cart').click(function() {
+          $('.cart').on('click','.hapus_cart',function(){
             var id= $(this).attr('data');
             $.ajax({
             type : "POST",
@@ -175,10 +180,39 @@
             dataType : "JSON",
             data : {id_dorder:id},
                 success: function(data){
-                    
+                  tampilkan_cart();
                 }
                 });
-                tampilkan_cart();
+                
+                return false;
+          });
+
+          $('.bayar_saldo').on('click',function(){
+            var totalsaldo=$('.totalcart').html();
+            var id = $(this).attr('data');
+            $.ajax({
+            type : "POST",
+            url  : "<?php echo base_url('index.php/cart/bayar_saldo')?>",
+            data : {id_order:id,jml_saldo:totalsaldo},
+            success: function(data){
+              location.reload(true);
+              }
+            });   
+                return false;
+          });
+
+          $('.bayar_point').on('click',function(){
+            var totalpoint=$('.totalcart2').html();
+            var id = $(this).attr('data');
+            $.ajax({
+            type : "POST",
+            url  : "<?php echo base_url('index.php/cart/bayar_point')?>",
+            data : {id_order:id,jml_point:totalpoint},
+            success: function(data){
+              location.reload(true);
+
+              }
+            });   
                 return false;
           });
 

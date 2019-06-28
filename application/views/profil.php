@@ -97,12 +97,12 @@
 
     </section>
     <!-- /.content -->
-    <div class="modal fade" id="ModalaEdit" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+    <div class="modal fade" id="RincianOrder" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 class="modal-title" id="myModalLabel">Edit Barang</h3>
+                <h3 class="modal-title" id="myModalLabel">Rincian Order</h3>
             </div>
             <table id="example1" class="table table-bordered table-hover">
                 <thead>
@@ -125,18 +125,18 @@
             </div>
     </div>
 
-    <div class="modal fade" id="ModalaHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+    <div class="modal fade" id="ModalHapusRiwayat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Hapus Order</h4>
+                        <h4 class="modal-title" id="myModalLabel">Hapus Riwayat</h4>
                     </div>
                     <form class="form-horizontal">
                     <div class="modal-body">
                                            
                             <input type="hidden" name="idriwayat" id="riwayatHapus" value="">
-                            <div class="alert alert-warning"><p>Apakah Anda yakin mau Membatalkan Riwayat ini?</p></div>                 
+                            <div class="alert alert-warning"><p>Apakah Anda yakin mau Menghapus Riwayat ini?</p></div>                 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -146,6 +146,91 @@
                 </div>
             </div>
     </div>
+
+    <!-- MODAL EDIT -->
+    <div class="modal fade" id="ModalEditProfil" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 class="modal-title" id="myModalLabel">Edit Barang</h3>
+            </div>
+            <form class="form-horizontal" id="update">
+                <div class="modal-body">
+
+                <div class="form-group">
+                        <label class="control-label col-xs-3" >Kode Barang</label>
+                        <div class="col-xs-9">
+                            <input name="kode" id="nama_produk2" class="form-control" type="text" placeholder="Nama Barang" style="width:335px;" readonly>
+                        </div>
+                </div>
+ 
+                <div class="form-group">
+                  <label class="control-label col-xs-3">Gambar</label>
+                  <div class="col-xs-9">
+                    <input type="file" name="file" id="gambar" class="form-control" style="width:335px;" required>
+                  </div> 
+                </div>
+
+ 
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Nama Barang</label>
+                        <div class="col-xs-9">
+                            <input name="nama" id="nama_produk2" class="form-control" type="text" placeholder="Nama Barang" style="width:335px;" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-xs-3">Kategori</label>
+                      <div class="col-xs-9">
+                      <select class="form-control select2 select2-hidden-accessible" name="kategori" id="kategori2" style="width:335px;" tabindex="-1" aria-hidden="true">
+                        <option selected="selected">Pilih</option>
+                        <option>Makanan</option>
+                        <option>Minuman</option>
+                        <option>DLL</option>
+                      </select>
+                      </div>
+                  </div>
+ 
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Harga Modal</label>
+                        <div class="col-xs-9">
+                            <input name="modal" id="modal2" class="form-control" type="text" placeholder="Harga Modal" style="width:335px;" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Harga Jual</label>
+                        <div class="col-xs-9">
+                            <input name="jual" id="jual2" class="form-control" type="text" placeholder="Harga Jual" style="width:335px;" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Stok</label>
+                        <div class="col-xs-9">
+                            <input name="stok" id="stok2" class="form-control" type="text" placeholder="Stok" style="width:335px;" required>
+                        </div>
+                    </div>
+
+                <div class="form-group">
+                  <label class="control-label col-xs-3">Deskripsi</label>
+                  <div class="col-xs-9">
+                  <textarea class="form-control" name="deskripsi" id="deskripsi2" rows="3" placeholder="Deskripsi ..."></textarea>
+                  </div>
+                </div>
+ 
+                </div>
+ 
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+                    <button type="submit" class="btn btn-info" id="btn_update">Update</button>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+        <!--END MODAL EDIT-->
   </div>
     <?php $this->load->view('_part/footer.php')?>
     
@@ -191,7 +276,7 @@
                 '</li>'+
               '</ul>'+
 
-              '<a href="#" class="btn btn-primary btn-block"><b>Edit Profil</b></a>'+
+              '<button class="btn btn-primary btn-block editProfil"><b>Edit Profil</b></button>'+
             '</div>'+
             '<!-- /.box-body -->'+
           '</div>'+
@@ -256,6 +341,12 @@
  
             });
         }
+        
+        $('.editProfil').click(function(){
+          $('#ModalEditProfil').modal('show');
+          });
+
+        // GET RINCIAN
         $('.rincian').on('click',function(){
             var id=$(this).attr('data');
             $.ajax({
@@ -278,34 +369,15 @@
                                   
             });
             $('#rincian').html(oh);
-            $('#ModalaEdit').modal('show');
+            $('#RincianOrder').modal('show');
         }
       });
       return false;
     });
-    //     //TambahSaldo
-    //     $('#btn_saldo').on('click',function(){
-    //         var id=$('#idsaldo').val();
-    //         var saldo=Number($('#isisaldo').val())+Number($('#saldolama').val());
-    //         // alert(saldo);
-    //         $.ajax({
-    //         type : "POST",
-    //         url  : "<?php echo base_url('index.php/user/tambah_saldo')?>",
-    //         dataType : "JSON",
-    //                 data : {id_akun:id ,saldo:saldo},
-    //                 success: function(data){
-    //                         $('#ModalaAdd').modal('hide');
-    //                         tampil_data_user();
-    //                 }
-    //             });
-    //             return false;
-    //         });
-    
-
     //     //GET HAPUS RIWAYAT
       $('#riwayat').on('click','.hapus_riwayat',function(){
         var id=$(this).attr('data');
-        $('#ModalaHapus').modal('show');
+        $('#ModalHapusRiwayat').modal('show');
         $('[name="idriwayat"]').val(id);
         });
 
@@ -319,7 +391,7 @@
             dataType : "JSON",
                     data : {idorder: id},
                     success: function(data){
-                            $('#ModalaHapus').modal('hide');
+                            $('#ModalHapusRiwayat').modal('hide');
                             tampil_riwayat();
                     }
                 });

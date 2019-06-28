@@ -9,16 +9,19 @@ class Penjualan extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('M_penjualan');
+        $this->load->model('M_user');
     }
 
 
     public function order()
     {
-        $this->load->view('admin/order.php');
+        $data["user"]=$this->M_user->get_akun($_SESSION['id_user']);
+        $this->load->view('admin/order.php',$data);
     }
 
     public function histori(){
-        $this->load->view('admin/history.php');  
+        $data["user"]=$this->M_user->get_akun($_SESSION['id_user']);
+        $this->load->view('admin/history.php',$data);  
     }
 
     function data_order(){

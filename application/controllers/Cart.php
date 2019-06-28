@@ -57,35 +57,40 @@ class Cart extends CI_Controller {
     }
     function bayar_saldo()
     {
-        $idorder=$this->input->get('id_order');
-        $jumlahbayar=$this->input->get('jml_saldo');
+        $idorder=$this->input->post('id_order');
+        $jumlahbayar=$this->input->post('jml_saldo');
 
         $ceksaldo=$this->M_user->get_akun($_SESSION['id_user']);
             if($ceksaldo['saldo']>$jumlahbayar){
                 $byrsaldo=$ceksaldo['saldo']-$jumlahbayar;
                 $this->M_cart->byr_saldo($byrsaldo,$_SESSION['id_user']);
                 $this->M_cart->bayar($idorder);
+                $this->session->set_flashdata('berhasilbayar',"Swal.fire(
+                    'Terima Kasih',
+                    'Anda Telah Melakukan Pembayaran',
+                    'success'
+                );");
             }else{
-                $this->session->set_flashdata('saldokurang','<div class="alert alert-danger" role="alert">
-                Sorry Saldo ente Kurang!
-              </div>');
+                $this->session->set_flashdata('saldokurang',"Swal.fire('Maaf Saldo Ente Kurang ...!');");
             }
-        
     }
     function bayar_point()
     {
-        $idorder=$this->input->get('id_order');
-        $jumlahbayar=$this->input->get('jml_point');
+        $idorder=$this->input->post('id_order');
+        $jumlahbayar=$this->input->post('jml_point');
 
         $ceksaldo=$this->M_user->get_akun($_SESSION['id_user']);
             if($ceksaldo['point']>$jumlahbayar){
                 $byrpoint=$ceksaldo['point']-$jumlahbayar;
-                $this->M_cart->byr_point($byrpoint,$_SESSION['id_user']);
+                $berhasil=$this->M_cart->byr_point($byrpoint,$_SESSION['id_user']);
                 $this->M_cart->bayar($idorder);
+                $this->session->set_flashdata('berhasilbayar',"Swal.fire(
+                    'Terima Kasih',
+                    'Anda Telah Melakukan Pembayaran',
+                    'success'
+                );");
             }else{
-                $this->session->set_flashdata('saldokurang','<div class="alert alert-danger" role="alert">
-                Sorry Point ente Kurang!
-              </div>');
+                $this->session->set_flashdata('saldokurang',"Swal.fire('Maaf Point Ente Kurang');");
             }
     }
 
