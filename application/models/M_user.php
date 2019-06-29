@@ -21,24 +21,11 @@ class M_user extends CI_Model {
 
     function get_akun($idakun){
         $hasil=$this->db->query("SELECT tb_akuns.*, dompet.saldo,dompet.point, tb_room.room FROM tb_akuns INNER JOIN dompet ON tb_akuns.id_dompet=dompet.id_dompet INNER JOIN tb_room ON tb_room.id_room=tb_akuns.id_room WHERE tb_akuns.id_akun=$idakun");
-        // if($hasil->num_rows > 0){
-        //     foreach ($hasil as $data ) {
-        //         $hasil=array(
-        //         'idakun'=> $data->id_akun,
-        //         'username'=> $data->username,
-        //         'name'=> $data->name,
-        //         'birth'=> $data->birth,
-        //         'email'=> $data->email,
-        //         'no_hp'=> $data->no_hp,
-        //         'gender'=> $data->gender,
-        //         'created'=> $data->created,
-        //         'last_login'=> $data->last_login,
-        //         'saldo'=> $data->saldo,
-        //         'room'=> $data->room
-        //         );
-        //     }
-        
         return $hasil->row_array();    
+        }
+    function edit_akun($nama,$ttl,$nope,$email,$idkamar,$motto,$idakun){
+            $hasil=$this->db->query("UPDATE tb_akuns SET name='$nama',birth='$ttl',no_hp='$nope',email='$email',id_room='$idkamar',motto='$motto' WHERE id_akun='$idakun'");
+            return $hasil;
         }
         
     }

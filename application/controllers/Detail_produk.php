@@ -9,6 +9,9 @@ class Detail_produk extends CI_Controller {
         parent::__construct();
         $this->load->model('M_user');
         $this->load->model('M_produk');
+        if ($this->session->userdata('masuk') != TRUE) {
+            show_404();
+        }
         
     }
     

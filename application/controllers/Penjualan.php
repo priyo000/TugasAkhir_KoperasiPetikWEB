@@ -15,13 +15,21 @@ class Penjualan extends CI_Controller {
 
     public function order()
     {
+        if ($this->session->userdata('masuk') != TRUE || $this->session->userdata('level')!='2') {
+            show_404();
+        }else{
         $data["user"]=$this->M_user->get_akun($_SESSION['id_user']);
         $this->load->view('admin/order.php',$data);
+     }
     }
 
     public function histori(){
+        if ($this->session->userdata('masuk') != TRUE || $this->session->userdata('level')!='2') {
+            show_404();
+        }else{
         $data["user"]=$this->M_user->get_akun($_SESSION['id_user']);
-        $this->load->view('admin/history.php',$data);  
+        $this->load->view('admin/history.php',$data);
+        }  
     }
 
     function data_order(){

@@ -9,6 +9,9 @@ class Cart extends CI_Controller {
         parent::__construct();
         $this->load->model('M_cart');
         $this->load->model('M_user');
+        if ($this->session->userdata('masuk') != TRUE) {
+            show_404();
+        }
         
     }
     
@@ -48,6 +51,11 @@ class Cart extends CI_Controller {
         $ttl=$qty*$hrg;
         $ttl2=$qty*$pnt;
         if (count($cek)>0) {
+            // $cekisi=$this->M_cart->isi_keranjang($_SESSION['id_user']);
+            // var_dump($cekisi); exit();
+            // if ($cekisi->id_produk==$idproduk) {
+                
+            // }
             $this->M_cart->tambah_isi($cek[0]->id_order,$idproduk,$qty,$ttl,$ttl2);
         }else{
             $idorder=time();

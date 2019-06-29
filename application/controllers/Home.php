@@ -9,6 +9,9 @@ class Home extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('M_user');
+        if ($this->session->userdata('masuk') != TRUE) {
+            show_404();
+        }
 
         
         // var_dump($data["user"][0]->id_akun);

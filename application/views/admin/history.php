@@ -249,7 +249,7 @@ $(document).ready(function(){
                     data : {idorder: kode},
                     success: function(data){
                             $('#ModalaHapus').modal('hide');
-                            tampil_data_order();
+                            tampil_data_histori();
                     }
                 });
                 return false;

@@ -221,11 +221,6 @@
             </div>
         </div>
         <!--END MODAL HAPUS-->
-
-        
-                
-
-
     <!-- akhir modal -->
   </div>
   </div>
@@ -283,6 +278,7 @@
         //GET UPDATE
         $('#show_data').on('click','.item_edit',function(){
             var id=$(this).attr('data');
+            $('#btnkonfirmasi').attr('data',$(this).attr('data'));
             $.ajax({
                 type : "GET",
                 url  : "<?php echo base_url('index.php/penjualan/get_detail_order')?>",

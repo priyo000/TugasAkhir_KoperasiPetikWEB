@@ -26,10 +26,50 @@
 
     <!-- Main content -->
     <section class="content">
-
       <div class="row">
         <div class="col-md-4 " id="propil">
+        <div class="box box-primary">
+            <div class="box-body box-profile">
+              <img class=" img-responsive img-circle" src="<?=base_url()?>assets/images/user/800x800/default.jpg" alt="User profile picture">
+              <h3 class="profile-username text-center"><?=$user['name']?></h3>
+              <p class="text-muted text-center">Santri Petik Angkatan VI</p>
+              <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>Saldo</b> <a class="pull-right"><?=$user['saldo']?></a>
+                </li>
+                <li class="list-group-item">
+                  <b>Email</b> <a class="pull-right"><?=$user['email']?></a>
+                </li>
+                <li class="list-group-item">
+                  <b>Nomor hape</b> <a class="pull-right"><?=$user['no_hp']?></a>
+                </li>
+                <li class="list-group-item">
+                  <b>Kamar</b> <a class="pull-right"><?=$user['room']?></a>
+                </li>
+              </ul>
+              <button class="btn btn-primary btn-block editProfil"><b>Edit Profil</b></button>
+            </div>
+            <!-- /.box-body -->
+          </div>
           <!-- /.box -->
+          <!-- About Me Box -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">About Me</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <strong><i class="fa fa-book margin-r-5"></i>Nama</strong>
+              <p class="text-muted"><?=$user['name']?></p>
+              <hr>
+              <strong><i class="fa fa-map-marker margin-r-5"></i>Birth</strong>
+              <p class="text-muted">Entikong, <?=$user['birth']?></p>
+              <hr>
+              <strong><i class="fa fa-file-text-o margin-r-5"></i> Motto Hidup</strong>
+              <p><?=$user['motto']?></p>
+            </div>
+            <!-- /.box-body -->
+          </div>
         </div>
         <!-- /.col -->
         <div class="col-md-8">
@@ -41,7 +81,7 @@
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
                 <!-- Post -->
-                <table id="example1" class="table table-bordered table-hover">
+            <table id="example1" class="table table-bordered table-hover">
                 <thead>
                 <tr>
                   <!-- <th>Kode</th> -->
@@ -76,8 +116,7 @@
                   <th>Transaksi</th>
                 </tr>
                 </thead>
-                <tbody id="riwayat">
-                    
+                <tbody id="riwayat">        
                 
                 </tbody>
             </table>
@@ -153,78 +192,72 @@
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 class="modal-title" id="myModalLabel">Edit Barang</h3>
+                <h3 class="modal-title" id="myModalLabel">Pengaturan Profil</h3>
             </div>
-            <form class="form-horizontal" id="update">
+            <form action="<?=base_url()?>index.php/profil/edit_profil" class="form-horizontal" id="update" method="post">
                 <div class="modal-body">
 
                 <div class="form-group">
-                        <label class="control-label col-xs-3" >Kode Barang</label>
+                        <label class="control-label col-xs-3" >NIM</label>
                         <div class="col-xs-9">
-                            <input name="kode" id="nama_produk2" class="form-control" type="text" placeholder="Nama Barang" style="width:335px;" readonly>
+                            <input name="kode" id="nim" class="form-control" type="text" placeholder="NIM" style="max-width:500px;" readonly>
                         </div>
                 </div>
  
                 <div class="form-group">
-                  <label class="control-label col-xs-3">Gambar</label>
+                  <label class="control-label col-xs-3">Nama</label>
                   <div class="col-xs-9">
-                    <input type="file" name="file" id="gambar" class="form-control" style="width:335px;" required>
+                    <input type="text" name="nama" id="nama" placeholder="Nama" class="form-control" style="max-width:500px;" required>
                   </div> 
                 </div>
 
- 
+                <div class="form-group">
+                  <label class="control-label col-xs-3">TTL</label>
+                  <div class="col-xs-5">
+                  <input type="text" class="form-control" placeholder="Tempat" id="ttl" name="tempat" style="max-width:500px;" required>
+                  </div>
+                  <div class="col-xs-4">
+                  <input type="date" class="form-control" id="datepicker" name="ttl" style="max-width:500px;" required>
+                  </div>
+                </div>
+
                     <div class="form-group">
-                        <label class="control-label col-xs-3" >Nama Barang</label>
+                        <label class="control-label col-xs-3">No. HP</label>
                         <div class="col-xs-9">
-                            <input name="nama" id="nama_produk2" class="form-control" type="text" placeholder="Nama Barang" style="width:335px;" required>
+                            <input name="nope" id="nope" class="form-control" type="text" placeholder="No. HP" style="max-width:500px;" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                      <label class="control-label col-xs-3">Kategori</label>
+                        <label class="control-label col-xs-3">Email</label>
+                        <div class="col-xs-9">
+                            <input name="email" id="email" class="form-control" type="text" placeholder="Email" style="max-width:500px;" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-xs-3">Kamar</label>
                       <div class="col-xs-9">
-                      <select class="form-control select2 select2-hidden-accessible" name="kategori" id="kategori2" style="width:335px;" tabindex="-1" aria-hidden="true">
-                        <option selected="selected">Pilih</option>
-                        <option>Makanan</option>
-                        <option>Minuman</option>
-                        <option>DLL</option>
+                      <select class="form-control select2 select2-hidden-accessible" name="kamar" id="kamar" style="max-width:500px;" tabindex="-1" aria-hidden="true">
+                        <option selected="selected" disabled selected>Pilih</option>
+                        <option value="1">Makanan</option>
+                        <option value="2">Minuman</option>
+                        <option value="3">DLL</option>
                       </select>
                       </div>
                   </div>
- 
-                    <div class="form-group">
-                        <label class="control-label col-xs-3" >Harga Modal</label>
-                        <div class="col-xs-9">
-                            <input name="modal" id="modal2" class="form-control" type="text" placeholder="Harga Modal" style="width:335px;" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-xs-3" >Harga Jual</label>
-                        <div class="col-xs-9">
-                            <input name="jual" id="jual2" class="form-control" type="text" placeholder="Harga Jual" style="width:335px;" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-xs-3" >Stok</label>
-                        <div class="col-xs-9">
-                            <input name="stok" id="stok2" class="form-control" type="text" placeholder="Stok" style="width:335px;" required>
-                        </div>
-                    </div>
 
                 <div class="form-group">
-                  <label class="control-label col-xs-3">Deskripsi</label>
+                  <label class="control-label col-xs-3">Motto</label>
                   <div class="col-xs-9">
-                  <textarea class="form-control" name="deskripsi" id="deskripsi2" rows="3" placeholder="Deskripsi ..."></textarea>
+                  <textarea class="form-control" name="motto" id="motto" rows="3" placeholder="Motto Ente...."></textarea>
                   </div>
                 </div>
- 
+
                 </div>
- 
                 <div class="modal-footer">
                     <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
-                    <button type="submit" class="btn btn-info" id="btn_update">Update</button>
+                    <button type="submit" class="btn btn-info" id="btn_update">Simpan</button>
                 </div>
             </form>
             </div>
@@ -237,87 +270,8 @@
 <?php $this->load->view('_part/js.php')?>
 <script type="text/javascript">
     $(document).ready(function(){
-        tampil_data_user();
         tampil_riwayat();
-         
-        // $('#mydata').dataTable();
-          
-        //fungsi tampil barang
-        function tampil_data_user(){
-            $.ajax({
-                type  : 'AJAX',
-                url   : '<?php echo base_url()?>index.php/profil/get_akun',
-                async : false,
-                dataType : 'json',
-                success : function(data){
-    
-                    var html = '';
-          
-                        html += '<div class="box box-primary">'+
-            '<div class="box-body box-profile">'+
-              '<img class="profile-user-img img-responsive img-circle" src="<?=base_url()?>assets/images/user/800x800/default.jpg" alt="User profile picture">'+
 
-              '<h3 class="profile-username text-center">'+data.user.name+'</h3>'+
-
-              '<p class="text-muted text-center">Software Engineer</p>'+
-
-              '<ul class="list-group list-group-unbordered">'+
-                '<li class="list-group-item">'+
-                  '<b>Saldo</b> <a class="pull-right">'+data.user.saldo+'</a>'+
-                '</li>'+
-                '<li class="list-group-item">'+
-                  '<b>Email</b> <a class="pull-right">'+data.user.email+'</a>'+
-                '</li>'+
-                '<li class="list-group-item">'+
-                  '<b>Nomor hape</b> <a class="pull-right">'+data.user.no_hp+'</a>'+
-                '</li>'+
-                '<li class="list-group-item">'+
-                  '<b>Kamar</b> <a class="pull-right">'+data.user.room+'</a>'+
-                '</li>'+
-              '</ul>'+
-
-              '<button class="btn btn-primary btn-block editProfil"><b>Edit Profil</b></button>'+
-            '</div>'+
-            '<!-- /.box-body -->'+
-          '</div>'+
-          '<!-- /.box -->'+
-
-          '<!-- About Me Box -->'+
-          '<div class="box box-primary">'+
-            '<div class="box-header with-border">'+
-              '<h3 class="box-title">About Me</h3>'+
-            '</div>'+
-            '<!-- /.box-header -->'+
-            '<div class="box-body">'+
-              '<strong><i class="fa fa-book margin-r-5"></i>Nama</strong>'+
-
-              '<p class="text-muted">'+data.user.name+'</p>'+
-            
-              '<hr>'+
-
-              '<strong><i class="fa fa-map-marker margin-r-5"></i>Birth</strong>'+
-
-              '<p class="text-muted">'+data.user.birth+'</p>'+
-
-              '<hr>'+
-
-              '<strong><i class="fa fa-pencil margin-r-5"></i> Jenis Kelamin</strong>'+
-
-              '<p>'+data.user.gender+'</p>'+
-              '<hr>'+
-
-              '<strong><i class="fa fa-file-text-o margin-r-5"></i> Motto Hidup</strong>'+
-
-              '<p>'+data.user.motto+'</p>'+
-            '</div>'+
-            '<!-- /.box-body -->'+
-          '</div>';
-
-                    $('#propil').html(html);
-                }
- 
-            });
-        }
         function tampil_riwayat(){
             $.ajax({
                 type  : 'AJAX',

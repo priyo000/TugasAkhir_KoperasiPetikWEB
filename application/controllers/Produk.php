@@ -12,10 +12,12 @@ class Produk extends CI_Controller {
     }
 
     public function index()
-    {
+    {   if ($this->session->userdata('masuk') != TRUE || $this->session->userdata('level')!='2') {
+        show_404();
+    }else{
         $data["user"]=$this->M_user->get_akun($_SESSION['id_user']);
         $this->load->view('admin/produk.php',$data);
-        
+    }
     }
 
     function data_produk()

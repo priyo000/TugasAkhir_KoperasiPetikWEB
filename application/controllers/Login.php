@@ -31,6 +31,7 @@ class Login extends CI_Controller {
                 $url=base_url().'index.php/home';
                 redirect($url);
             } else {
+                $this->session->set_userdata('masuk',TRUE);
                 $this->session->set_userdata('id_user',$data['id_akun']);
                 $this->session->set_userdata('level',$data['level']);
                 $this->session->set_userdata('nama',$data['name']);

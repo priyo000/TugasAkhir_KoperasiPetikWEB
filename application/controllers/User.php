@@ -8,7 +8,9 @@ class User extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('M_user');
-        
+        if ($this->session->userdata('masuk') != TRUE || $this->session->userdata('level')!='2') {
+            show_404();
+        } 
     }
 
     public function index()
