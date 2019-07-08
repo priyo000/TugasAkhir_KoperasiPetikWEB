@@ -16,6 +16,7 @@ class Profil extends CI_Controller {
 
     public function index()
     {
+        $data["kamar"]=$this->db->get('tb_room')->result();
         $data["order"]=$this->M_penjualan->get_order($_SESSION['id_user']);
         $data["user"]=$this->M_user->get_akun($_SESSION['id_user']);
         $this->load->view('profil',$data);
@@ -27,13 +28,14 @@ class Profil extends CI_Controller {
     }
     function edit_profil(){
         $nama=$this->input->post('nama');
+        $tempat=$this->input->post('tempat');
         $ttl=$this->input->post('ttl');
         $nope=$this->input->post('nope');
         $email=$this->input->post('email');
         $idkamar=$this->input->post('kamar');
         $motto=$this->input->post('motto');
         $idakun=$_SESSION['id_user'];
-        $riwayat=$this->M_user->edit_akun($nama,$ttl,$nope,$email,$idkamar,$motto,$idakun);
+        $riwayat=$this->M_user->edit_akun($nama,$tempat,$ttl,$nope,$email,$idkamar,$motto,$idakun);
 
     }
 

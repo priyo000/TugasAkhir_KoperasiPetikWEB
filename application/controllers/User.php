@@ -26,10 +26,19 @@ class User extends CI_Controller {
         echo json_encode($data);
     }
 
+    function tambah_user(){
+        $nim=$this->input->post('nim');
+        $password=$this->input->post('password');
+        $level=$this->input->post('level');
+        $data=$this->M_user->tambah_user($nim,$password,$level);
+        echo json_encode($data);
+    }
+
     function tambah_saldo(){
         $idakun=$this->input->post('id_akun');
         $saldo=$this->input->post('saldo');
-        $data=$this->M_user->tambah_saldo($idakun,$saldo);
+        $point=$this->input->post('point');
+        $data=$this->M_user->tambah_saldo($idakun,$saldo,$point);
         echo json_encode($data);
     }
 

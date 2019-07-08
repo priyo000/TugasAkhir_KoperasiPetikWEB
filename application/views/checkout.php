@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Check Out</title>
+  <link rel = "icon" type = "image/png" href = "<?=base_url()?>assets/images/iconkoperasi.png">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
@@ -30,8 +32,7 @@
     <!-- Main content -->
     <section class="content-header">
       <h1>
-        Data Tables
-        <small>advanced tables</small>
+        Check Out
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -67,11 +68,11 @@
                 <tfoot>
                   <tr>
                     <th colspan="4">TOTAL DENGAN SALDO </th>
-                    <th class="totalcart"></th>
+                    <th>Rp. <span class="totalcart"></span> </th>
                   </tr>
                   <tr>
                     <th colspan="4">TOTAL DENGAN POINT</th>
-                    <th class="totalcart2"></th>
+                    <th>Pt. <span class="totalcart2"></span></th>
                   </tr>
                 </tfoot>
               </table>
@@ -133,9 +134,9 @@
                         html += '<tr>'+
                                 '<td><img class="" width="50px" height="50px" src="<?=base_url()?>/assets/images/produk/800x800/'+data[i].gambar_produk+'" alt="User Avatar"></td>'+
                                 '<td>'+data[i].nama_produk+'</td>'+
-                                '<td>'+data[i].harga_jual+'</td>'+
+                                '<td>Rp. '+data[i].harga_jual+'<br/> Pt. '+data[i].harga_modal+'</td>'+
                                 '<td>'+data[i].kuantitas+'</td>'+
-                                '<td>'+data[i].total_harga+'</td>'+
+                                '<td>Rp. '+data[i].total_harga+'<br/> Pt. '+data[i].total_harga2+'</td>'+
                                 '<td style="text-align:right;">'+
                                     '<button href="javascript:;" class="btn btn-danger btn-xs hapus_cart" data="'+data[i].id_detail_order+'">Hapus</button>'+
                                 '</td>'+

@@ -20,7 +20,6 @@ class Detail_produk extends CI_Controller {
         $data["user"]=$this->M_user->get_akun($_SESSION['id_user']);
         $id_detail_order=$this->input->get('id');
         $data["produk"]=$this->M_produk->get_produk_byid($id_detail_order);
-        // var_dump($data["produk"]);
         $this->load->view('produk',$data);
         
     }

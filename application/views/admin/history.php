@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Manajemen Riwayat</title>
+  <link rel = "icon" type = "image/png" href = "<?=base_url()?>assets/images/iconkoperasi.png">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
@@ -29,13 +31,12 @@
     <!-- Main content -->
     <section class="content-header">
       <h1>
-        Data Tables
-        <small>advanced tables</small>
+        Riwayat Penjualan
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Data tables</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>Admin</a></li>
+        <li><a href="#">Manajemen Penjualan</a></li>
+        <li class="active">Riwayat Penjualan</li>
       </ol>
     </section>
 
@@ -87,16 +88,26 @@
             <table id="example1" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  
+                  <th>Gambar</th>
                   <th>Nama Barang</th>
+                  <th>Harga</th>
                   <th>Qty</th>
-                  <th>Total Harga</th>
-                  
+                  <th>Sub Total</th>
                 </tr>
                 </thead>
                 <tbody id="rincian">
                 
                 </tbody>
+                <tfoot>
+                  <tr>
+                    <th colspan="4">TOTAL DENGAN SALDO </th>
+                    <th>Rp. <span class="totalorder"></span> </th>
+                  </tr>
+                  <tr>
+                    <th colspan="4">TOTAL DENGAN POINT</th>
+                    <th>Pt. <span class="totalorder2"></span></th>
+                  </tr>
+                </tfoot>
               </table>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -151,6 +162,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
         tampil_data_histori();   //pemanggilan fungsi tampil barang.
+        tampilkan_cart()
          
           
         //fungsi tampil barang
@@ -166,7 +178,7 @@ $(document).ready(function(){
                     for(i=0; i<data.length; i++){
                         html += '<tr>'+
                                 '<td>'+data[i].id_order+'</td>'+
-                                '<td>'+data[i].username+'</td>'+
+                                '<td>'+data[i].name+'</td>'+
                                 '<td>'+data[i].waktu_order+'</td>'+
                                 '<td style="text-align:right;">'+
                                     '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="'+data[i].id_order+'">Rincian</a>'+' '+
@@ -183,6 +195,7 @@ $(document).ready(function(){
         //GET UPDATE
         $('#histori').on('click','.item_edit',function(){
             var id=$(this).attr('data');
+            $('#btnkonfirmasi').attr('data',$(this).attr('data'));
             $.ajax({
                 type : "GET",
                 url  : "<?php echo base_url('index.php/penjualan/get_detail_order')?>",
@@ -190,21 +203,25 @@ $(document).ready(function(){
                 data : {id_order:id},
                 success: function(data,){
                     var oh = '';
-                    $.each(data,function(i,id_order){
-                    $('#btnkonfirmasi').attr('data',data[0].id_order);
-                    });
-                    $.each(data,function(i,nama_produk,kuantitas,total_harga){
-                        // alert(data[i].nama_produk);
+                    var th=0;
+                    var tp=0;
+                    for(i=0;i<data.length;i++){
+                        th+=Number(data[i].total_harga);
+                        tp+=Number(data[i].total_harga2);
                         oh += '<tr>'+
+                                '<td><img class="" width="50px" height="50px" src="<?=base_url()?>/assets/images/produk/800x800/'+data[i].gambar_produk+'" alt="User Avatar"></td>'+
                                 '<td>'+data[i].nama_produk+'</td>'+
+                                '<td>Rp. '+data[i].harga_jual+'<br/> Pt. '+data[i].harga_modal+'</td>'+
                                 '<td>'+data[i].kuantitas+'</td>'+
-                                '<td>'+data[i].total_harga+'</td>'+
-                                '<td style="text-align:right;">'+
-                                    // '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="'+data.id_order+'">Rincian</a>'+
-                                '</td>'+
+                                '<td>Rp. '+data[i].total_harga+'<br/> Pt. '+data[i].total_harga2+'</td>'+
                                 '</tr>';
                                   
-            });
+            }
+            $('.totalorder').html(th);
+            $('.totalorder2').html(tp);
+            $('#pengorder').html(data[0].name);
+            $('.metode').html(data[0].metode_bayar);
+            $('.kodeorder').html(data[0].id_order);
             $('#rincian').html(oh);
             $('#ModalaEdit').modal('show');
         }
@@ -244,7 +261,7 @@ $(document).ready(function(){
             // alert(kode);
             $.ajax({
             type : "POST",
-            url  : "<?php echo base_url('index.php/penjualan/hapus_order')?>",
+            url  : "<?php echo base_url('index.php/penjualan/hapus_riwayat')?>",
             dataType : "JSON",
                     data : {idorder: kode},
                     success: function(data){
@@ -256,6 +273,79 @@ $(document).ready(function(){
             });
  
     });
+    function tampilkan_cart(){
+            $.ajax({
+                type  : 'AJAX',
+                url   : '<?php echo base_url()?>index.php/cart/load_keranjang',
+                async : false,
+                dataType : 'json',
+                success : function(data){
+                  $('.isi-cart').html(data.length);
+                    var html = '';
+                    var bayar ="";
+                    var i;
+                    var total=0;
+                    var total2=0;
+                    for(i=0; i<data.length; i++){
+                      var idorder= data[0].id_order;
+                        total+=Number(data[i].total_harga);
+                        total2+=Number(data[i].total_harga2);
+                        html += '<tr>'+
+                                '<td><img class="" width="50px" height="50px" src="<?=base_url()?>/assets/images/produk/800x800/'+data[i].gambar_produk+'" alt="User Avatar"></td>'+
+                                '<td>'+data[i].nama_produk+'</td>'+
+                                '<td>Rp. '+data[i].harga_jual+'<br/> Pt. '+data[i].harga_modal+'</td>'+
+                                '<td>'+data[i].kuantitas+'</td>'+
+                                '<td>Rp. '+data[i].total_harga+'<br/> Pt. '+data[i].total_harga2+'</td>'+
+                                '<td style="text-align:right;">'+
+                                    '<button href="javascript:;" class="btn btn-danger btn-xs hapus_cart" data="'+data[i].id_detail_order+'">Hapus</button>'+
+                                '</td>'+
+                                '</tr>';
+                    }
+                    bayar =
+                      '<button name="bayar_saldo" data="'+idorder+'" class="btn btn-danger bayar_saldo" style="margin-right:10px;">Bayar Menggunakan Saldo</button>'+
+                      '<button name="bayar_point" data="'+idorder+'" class="btn btn-warning bayar_point">Bayar Menggunakan Point</button>';
+                    $('.totalcart').html(total);
+                    $('.totalcart2').html(total2);
+                    $('.cart').html(html);
+                    $('#bayar').html(bayar);
+                }
+ 
+            });
+        }
+
+        $('.tambah_cart').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+            type : "POST",
+            url  : "<?php echo base_url('index.php/cart/tambah_isi')?>",
+            dataType : "JSON",
+            data : new FormData(this),
+            processData : false,
+            contentType : false,
+            cache : false,
+            async : false,
+            success: function(data){
+                
+                }
+            });
+                tampilkan_cart();
+                return false;
+          });
+        
+          $('.cart').on('click','.hapus_cart',function(){
+            var id= $(this).attr('data');
+            $.ajax({
+            type : "POST",
+            url  : "<?php echo base_url('index.php/cart/hapus_isi')?>",
+            dataType : "JSON",
+            data : {id_dorder:id},
+                success: function(data){
+                  tampilkan_cart();
+                }
+                });
+                
+                return false;
+          });
  
 </script>
 </body>

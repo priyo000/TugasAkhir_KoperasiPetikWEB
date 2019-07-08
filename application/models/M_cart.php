@@ -12,10 +12,16 @@ class M_cart extends CI_Model {
         $hasil=$this->db->query("SELECT * FROM tb_order WHERE id_akun='$id' && id_status='0'");
         return $hasil->result();
     }
+    function cek_isi($idorder,$id_produk){
+        $hasil=$this->db->query("SELECT * FROM tb_detail_order WHERE id_order='$idorder' && id_produk='$id_produk'");
+        return $hasil->result();
+    }
     function isi_keranjang($id){
-        $hasil=$this->db->query("SELECT tb_detail_order.id_order, tb_detail_order.id_detail_order, tb_produk.*, tb_detail_order.kuantitas, tb_detail_order.total_harga, tb_detail_order.total_harga2, tb_order.id_akun, tb_order.id_status FROM tb_detail_order 
+        $hasil=$this->db->query("SELECT tb_detail_order.id_order, tb_detail_order.id_detail_order, tb_produk.*, tb_detail_order.kuantitas, tb_detail_order.total_harga, tb_detail_order.total_harga2, tb_order.id_akun, tb_order.id_status 
+        FROM tb_detail_order 
         INNER JOIN tb_order ON tb_order.id_order=tb_detail_order.id_order 
-        INNER JOIN tb_produk ON tb_produk.id_produk=tb_detail_order.id_produk WHERE tb_order.id_akun=$id && tb_order.id_status=0");
+        INNER JOIN tb_produk ON tb_produk.id_produk=tb_detail_order.id_produk 
+        WHERE tb_order.id_akun=$id && tb_order.id_status=0");
         return $hasil->result();
     }
     function hapus_isi($id){
@@ -30,11 +36,21 @@ class M_cart extends CI_Model {
         $hasil=$this->db->query("INSERT INTO tb_detail_order (id_order,id_produk,kuantitas,total_harga,total_harga2) VALUES ('$idorder','$idproduk','$qty','$ttl','$ttl2')");
         return $hasil;
     }
+    function tambah_qty($idorder,$idproduk,$qty,$ttl,$ttl2){
+        $hasil=$this->db->query("UPDATE `tb_detail_order` SET `kuantitas`='$qty',`total_harga`='$ttl',`total_harga2`='$ttl2' WHERE id_order='$idorder' && id_produk='$idproduk';");
+        return $hasil;
+    }
 
-    function bayar($idorder)
+    function bayarnya_saldo($idorder)
     {
         $date=date("Y-m-d h:i:s");
-        $hasil=$this->db->query("UPDATE tb_order SET id_status='1',waktu_order='$date' WHERE id_order=$idorder");
+        $hasil=$this->db->query("UPDATE tb_order SET id_status='1',waktu_order='$date',metode_bayar='Dengan Saldo' WHERE id_order=$idorder");
+        return $hasil;
+    }
+    function bayarnya_point($idorder)
+    {
+        $date=date("Y-m-d h:i:s");
+        $hasil=$this->db->query("UPDATE tb_order SET id_status='1',waktu_order='$date',metode_bayar='Dengan Point' WHERE id_order=$idorder");
         return $hasil;
     }
 

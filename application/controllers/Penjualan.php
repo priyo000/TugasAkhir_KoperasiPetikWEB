@@ -38,7 +38,16 @@ class Penjualan extends CI_Controller {
     }
     function hapus_order(){
         $idorder=$this->input->post('idorder');
-        $data=$this->M_penjualan->hapus_order($idorder);
+        $idakun=$this->input->post('idakun');
+        $saldokembali=0;
+        $pointkembali=0;
+        $metode=$this->input->post('metode');
+        if ($metode=='Dengan Saldo') {
+            $saldokembali=$this->input->post('kembalikan');
+        }else{
+            $pointkembali=$this->input->post('kembalikan');
+        }
+        $data=$this->M_penjualan->hapus_order($idorder,$idakun,$saldokembali,$pointkembali);
         echo json_encode($data);
     }
     function get_detail_order(){
@@ -50,6 +59,11 @@ class Penjualan extends CI_Controller {
     function konfirmasi(){
         $idorder=$this->input->post('idorder');
         $data=$this->M_penjualan->konfirmasi_order($idorder);
+        echo json_encode($data);
+    }
+    function hapus_riwayat(){
+        $idorder=$this->input->post('idorder');
+        $data=$this->M_penjualan->hapus_riwayat($idorder);
         echo json_encode($data);
     }
     function data_histori(){

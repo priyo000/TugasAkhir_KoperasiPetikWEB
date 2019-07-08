@@ -51,12 +51,15 @@ class Cart extends CI_Controller {
         $ttl=$qty*$hrg;
         $ttl2=$qty*$pnt;
         if (count($cek)>0) {
-            // $cekisi=$this->M_cart->isi_keranjang($_SESSION['id_user']);
-            // var_dump($cekisi); exit();
-            // if ($cekisi->id_produk==$idproduk) {
-                
-            // }
+            $cekisi=$this->M_cart->cek_isi($cek[0]->id_order,$idproduk);
+            if (count($cekisi)>0) {
+                $qty2=$cekisi[0]->kuantitas+$qty;
+                $ttls2=$cekisi[0]->total_harga+$ttl;
+                $ttlp2=$cekisi[0]->total_harga2+$ttl2;
+                $this->M_cart->tambah_qty($cek[0]->id_order,$idproduk,$qty2,$ttls2,$ttlp2);
+            }else{
             $this->M_cart->tambah_isi($cek[0]->id_order,$idproduk,$qty,$ttl,$ttl2);
+            }
         }else{
             $idorder=time();
             $this->M_cart->buat_keranjang($idorder,$_SESSION['id_user']);
@@ -67,12 +70,11 @@ class Cart extends CI_Controller {
     {
         $idorder=$this->input->post('id_order');
         $jumlahbayar=$this->input->post('jml_saldo');
-
         $ceksaldo=$this->M_user->get_akun($_SESSION['id_user']);
             if($ceksaldo['saldo']>$jumlahbayar){
                 $byrsaldo=$ceksaldo['saldo']-$jumlahbayar;
                 $this->M_cart->byr_saldo($byrsaldo,$_SESSION['id_user']);
-                $this->M_cart->bayar($idorder);
+                $this->M_cart->bayarnya_saldo($idorder);
                 $this->session->set_flashdata('berhasilbayar',"Swal.fire(
                     'Terima Kasih',
                     'Anda Telah Melakukan Pembayaran',
@@ -91,7 +93,7 @@ class Cart extends CI_Controller {
             if($ceksaldo['point']>$jumlahbayar){
                 $byrpoint=$ceksaldo['point']-$jumlahbayar;
                 $berhasil=$this->M_cart->byr_point($byrpoint,$_SESSION['id_user']);
-                $this->M_cart->bayar($idorder);
+                $this->M_cart->bayarnya_point($idorder);
                 $this->session->set_flashdata('berhasilbayar',"Swal.fire(
                     'Terima Kasih',
                     'Anda Telah Melakukan Pembayaran',

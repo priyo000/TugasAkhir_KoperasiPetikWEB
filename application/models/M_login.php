@@ -4,9 +4,9 @@
     
     class M_login extends CI_Model {
     
-        function cek_akun($username,$password)
+        function cek_akun($nim,$password)
         {
-            $hasil=$this->db->query("SELECT * FROM tb_akuns WHERE username='$username'||nim='$username'&& password='$password' LIMIT 1");
+            $hasil=$this->db->query("SELECT * FROM tb_akuns WHERE nim='$nim' && password='$password' LIMIT 1");
             return $hasil;
         }
     

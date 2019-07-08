@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Products</title>
+    <title>Log in - Koperasi PeTIK</title>
+    <link rel = "icon" type = "image/png" href = "<?=base_url()?>assets/images/iconkoperasi.png">
     <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <?php $this->load->view('_part/cssjs.php')?>
     <style>
@@ -70,21 +71,18 @@
                     <h3>Login</h3>
                     <form action="<?php echo base_url()?>index.php/login/aut" method="post">
                         <div class="form-group">
-                            <input type="text" name="id" class="form-control" placeholder="Your Email *" value="" />
+                            <input type="text" name="id" class="form-control" placeholder="NIM Anda *" value="" />
                         </div>
                         <div class="form-group">
-                            <input type="password" name="pass" class="form-control" placeholder="Your Password *" value="" />
+                            <input type="password" name="pass" class="form-control" placeholder="Password Anda *" value="" />
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btnSubmit" value="Login" />
                         </div>
-                        <div class="form-group">
-                            <a href="#" class="ForgetPwd">Forget Password?</a>
-                        </div>
                     </form>
                 </div>
-                <div class="col-md-6 login-form-2">
-                    
+                <div class="col-md-6 login-form-2" style="padding:0px;">
+                    <img  src="<?=base_url()?>assets/images/priyopng.png" alt="Koperasi PeTIK" style="display:block;height:100%;width:100%;max-height:410px;max-width:410px;margin-left:auto;margin-right:auto;">
                 </div>
             </div>
         </div>

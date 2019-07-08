@@ -4,24 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User</title>
+    <title><?=$user['name']?></title>
+    <link rel = "icon" type = "image/png" href = "<?=base_url()?>assets/images/iconkoperasi.png">
     <?php $this->load->view('_part/cssjs.php')?>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini <?php if ($_SESSION['level']==1) {echo "layout-top-nav";}?>">
 <div class="wrapper">
     <?php $this->load->view('_part/navbar.php') ?>
-    <?php $this->load->view('_part/sidebar.php')?>
+    <?php if ($_SESSION['level']==2) {$this->load->view('_part/sidebar.php');}?>
     <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Page Header
-        <small>Optional description</small>
+        Profil
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-      </ol>
+
     </section>
 
     <!-- Main content -->
@@ -30,7 +27,7 @@
         <div class="col-md-4 " id="propil">
         <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class=" img-responsive img-circle" src="<?=base_url()?>assets/images/user/800x800/default.jpg" alt="User profile picture">
+              <img class=" img-responsive " src="<?=base_url()?>/assets/images/user/Default.JPG" style="max-width:500px;width:100%;min-height:500px;object-fit:cover;" alt="User profile picture">
               <h3 class="profile-username text-center"><?=$user['name']?></h3>
               <p class="text-muted text-center">Santri Petik Angkatan VI</p>
               <ul class="list-group list-group-unbordered">
@@ -62,8 +59,8 @@
               <strong><i class="fa fa-book margin-r-5"></i>Nama</strong>
               <p class="text-muted"><?=$user['name']?></p>
               <hr>
-              <strong><i class="fa fa-map-marker margin-r-5"></i>Birth</strong>
-              <p class="text-muted">Entikong, <?=$user['birth']?></p>
+              <strong><i class="fa fa-map-marker margin-r-5"></i>TTL</strong>
+              <p class="text-muted"><?=$user['tempat_lahir']?>, <?=$user['birth']?></p>
               <hr>
               <strong><i class="fa fa-file-text-o margin-r-5"></i> Motto Hidup</strong>
               <p><?=$user['motto']?></p>
@@ -200,21 +197,21 @@
                 <div class="form-group">
                         <label class="control-label col-xs-3" >NIM</label>
                         <div class="col-xs-9">
-                            <input name="kode" id="nim" class="form-control" type="text" placeholder="NIM" style="max-width:500px;" readonly>
+                            <input name="kode" id="nim" class="form-control" type="text" value="<?=$user['nim']?>" style="max-width:500px;" readonly>
                         </div>
                 </div>
  
                 <div class="form-group">
                   <label class="control-label col-xs-3">Nama</label>
                   <div class="col-xs-9">
-                    <input type="text" name="nama" id="nama" placeholder="Nama" class="form-control" style="max-width:500px;" required>
+                    <input type="text" name="nama" id="nama" placeholder="Nama" value="<?=$user['name']?>" class="form-control" style="max-width:500px;" required>
                   </div> 
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-xs-3">TTL</label>
                   <div class="col-xs-5">
-                  <input type="text" class="form-control" placeholder="Tempat" id="ttl" name="tempat" style="max-width:500px;" required>
+                  <input type="text" class="form-control" placeholder="Tempat" id="ttl" name="tempat" value="<?=$user['tempat_lahir']?>" style="max-width:500px;" required>
                   </div>
                   <div class="col-xs-4">
                   <input type="date" class="form-control" id="datepicker" name="ttl" style="max-width:500px;" required>
@@ -224,14 +221,14 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3">No. HP</label>
                         <div class="col-xs-9">
-                            <input name="nope" id="nope" class="form-control" type="text" placeholder="No. HP" style="max-width:500px;" required>
+                            <input name="nope" id="nope" class="form-control" type="text" placeholder="No. HP" value="<?=$user['no_hp']?>" style="max-width:500px;" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3">Email</label>
                         <div class="col-xs-9">
-                            <input name="email" id="email" class="form-control" type="text" placeholder="Email" style="max-width:500px;" required>
+                            <input name="email" id="email" class="form-control" type="text" placeholder="Email" value="<?=$user['email']?>" style="max-width:500px;" required>
                         </div>
                     </div>
 
@@ -240,9 +237,9 @@
                       <div class="col-xs-9">
                       <select class="form-control select2 select2-hidden-accessible" name="kamar" id="kamar" style="max-width:500px;" tabindex="-1" aria-hidden="true">
                         <option selected="selected" disabled selected>Pilih</option>
-                        <option value="1">Makanan</option>
-                        <option value="2">Minuman</option>
-                        <option value="3">DLL</option>
+                        <?php foreach ($kamar as $kamar) {?>
+                            <option value="<?=$kamar->id_room?>"><?=$kamar->room?></option>
+                    <?php } ?>
                       </select>
                       </div>
                   </div>
@@ -250,7 +247,7 @@
                 <div class="form-group">
                   <label class="control-label col-xs-3">Motto</label>
                   <div class="col-xs-9">
-                  <textarea class="form-control" name="motto" id="motto" rows="3" placeholder="Motto Ente...."></textarea>
+                  <textarea class="form-control" name="motto" id="motto" rows="3"  placeholder="Motto Ente...."><?=$user['motto']?></textarea>
                   </div>
                 </div>
 
@@ -265,12 +262,88 @@
         </div>
         <!--END MODAL EDIT-->
   </div>
-    <?php $this->load->view('_part/footer.php')?>
-    
+<?php $this->load->view('_part/footer.php')?>
 <?php $this->load->view('_part/js.php')?>
+
+<script src="<?=base_url()?>assets/dist/keranjang.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         tampil_riwayat();
+        tampilkan_cart();
+
+        function tampilkan_cart(){
+            $.ajax({
+                type  : 'AJAX',
+                url   : '<?php echo base_url()?>index.php/cart/load_keranjang',
+                async : false,
+                dataType : 'json',
+                success : function(data){
+                  $('.isi-cart').html(data.length);
+                    var html = '';
+                    var bayar ="";
+                    var i;
+                    var total=0;
+                    var total2=0;
+                    for(i=0; i<data.length; i++){
+                      var idorder= data[0].id_order;
+                        total+=Number(data[i].total_harga);
+                        total2+=Number(data[i].total_harga2);
+                        html += '<tr>'+
+                                '<td><img class="" width="50px" height="50px" src="<?=base_url()?>/assets/images/produk/800x800/'+data[i].gambar_produk+'" alt="User Avatar"></td>'+
+                                '<td>'+data[i].nama_produk+'</td>'+
+                                '<td>Rp. '+data[i].harga_jual+'<br/> Pt. '+data[i].harga_modal+'</td>'+
+                                '<td>'+data[i].kuantitas+'</td>'+
+                                '<td>Rp. '+data[i].total_harga+'<br/> Pt. '+data[i].total_harga2+'</td>'+
+                                '<td style="text-align:right;">'+
+                                    '<button href="javascript:;" class="btn btn-danger btn-xs hapus_cart" data="'+data[i].id_detail_order+'">Hapus</button>'+
+                                '</td>'+
+                                '</tr>';
+                    }
+                    bayar =
+                      '<button name="bayar_saldo" data="'+idorder+'" class="btn btn-danger bayar_saldo" style="margin-right:10px;">Bayar Menggunakan Saldo</button>'+
+                      '<button name="bayar_point" data="'+idorder+'" class="btn btn-warning bayar_point">Bayar Menggunakan Point</button>';
+                    $('.totalcart').html(total);
+                    $('.totalcart2').html(total2);
+                    $('.cart').html(html);
+                    $('#bayar').html(bayar);
+                }
+ 
+            });
+        }
+
+        $('.tambah_cart').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+            type : "POST",
+            url  : "<?php echo base_url('index.php/cart/tambah_isi')?>",
+            dataType : "JSON",
+            data : new FormData(this),
+            processData : false,
+            contentType : false,
+            cache : false,
+            async : false,
+            success: function(data){
+                
+                }
+            });
+                tampilkan_cart();
+                return false;
+          });
+        
+          $('.cart').on('click','.hapus_cart',function(){
+            var id= $(this).attr('data');
+            $.ajax({
+            type : "POST",
+            url  : "<?php echo base_url('index.php/cart/hapus_isi')?>",
+            dataType : "JSON",
+            data : {id_dorder:id},
+                success: function(data){
+                  tampilkan_cart();
+                }
+                });
+                
+                return false;
+          });
 
         function tampil_riwayat(){
             $.ajax({
