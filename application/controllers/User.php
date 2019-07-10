@@ -30,7 +30,7 @@ class User extends CI_Controller {
         $nim=$this->input->post('nim');
         $password=$this->input->post('password');
         $level=$this->input->post('level');
-        $data=$this->M_user->tambah_user($nim,$password,$level);
+        $data=$this->M_user->tambah_user($nim,md5($password),$level);
         echo json_encode($data);
     }
 

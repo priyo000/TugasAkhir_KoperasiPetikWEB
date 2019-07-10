@@ -242,7 +242,7 @@
       'lengthChange': false,
       'searching'   : false,
       'ordering'    : false,
-      'info'        : true,
+      'info'        : false,
       'autoWidth'   : false
     })
   })

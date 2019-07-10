@@ -148,13 +148,13 @@
 
 <script>
   $(function () {
-    $('#example2').DataTable()
-    $('#example1').DataTable({
+    $('#example1').DataTable()
+    $('#example2').DataTable({
       'paging'      : false,
       'lengthChange': false,
       'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
+      'ordering'    : false,
+      'info'        : false,
       'autoWidth'   : false
     })
   })

@@ -33,7 +33,7 @@ class M_cart extends CI_Model {
         return $hasil;
     }
     function tambah_isi($idorder,$idproduk,$qty,$ttl,$ttl2){
-        $hasil=$this->db->query("INSERT INTO tb_detail_order (id_order,id_produk,kuantitas,total_harga,total_harga2) VALUES ('$idorder','$idproduk','$qty','$ttl','$ttl2')");
+        $hasil=$this->db->query("INSERT INTO tb_detail_order (id_order,id_produk,kuantitas,total_harga,total_harga2) VALUES ('$idorder','$idproduk','$qty','$ttl','$ttl2');");
         return $hasil;
     }
     function tambah_qty($idorder,$idproduk,$qty,$ttl,$ttl2){

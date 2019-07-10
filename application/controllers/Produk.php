@@ -54,7 +54,7 @@ class Produk extends CI_Controller {
         $jual=$this->input->post('jual');
         $stok=$this->input->post('stok');
         $deskripsi=$this->input->post('deskripsi');
-        $gambar=$this->_gambar($kode);
+        $gambar=$this->_gambaredit($kode);
         $data=$this->M_produk->update_produk($kode,$nama,$kategori,$modal,$jual,$stok,$deskripsi,$gambar);
         echo json_decode($data);
     }
@@ -72,13 +72,9 @@ class Produk extends CI_Controller {
         $config['file_name']            = $kode.'.jpg';
         $config['overwrite']            =true;
         $config['max_size']             =1024;
-        // $config['max_width']            =800;
-        // $config['max_width']            =800;
         
-        //$this->input->post('gambar');
         $this->load->library('upload',$config);
         
-        // var_dump($this->upload->data("file_name")); exit();
         if ($this->upload->do_upload("file")){
             return $this->upload->data("file_name");
         }
@@ -86,6 +82,23 @@ class Produk extends CI_Controller {
             return 'default.jpg';
         }
     }
+    private function _gambaredit($kode){
+        $config['upload_path']          ='./assets/images/produk/800x800';
+        $config['allowed_types']        ='gif|jpg|png';
+        $config['file_name']            = $kode.'.jpg';
+        $config['overwrite']            =true;
+        $config['max_size']             =1024;
+        
+        $this->load->library('upload',$config);
+        
+        if ($this->upload->do_upload("file")){
+            return $this->upload->data("file_name");
+        }
+        else {
+            return $kode.'.jpg';
+        }
+    }
+    
 
 
 

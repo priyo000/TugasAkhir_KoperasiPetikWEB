@@ -116,7 +116,7 @@
                       <select class="form-control select2 select2-hidden-accessible" name="kategori" id="kategori" style="width:335px;" tabindex="-1" aria-hidden="true">
                         <option selected="selected">Pilih</option>
                         <option>Makanan</option>
-                        <option>Minuman</option>
+                        <option value="Minuman">Minuman</option>
                         <option>DLL</option>
                       </select>
                       </div>
@@ -175,14 +175,14 @@
                 <div class="form-group">
                         <label class="control-label col-xs-3" >Kode Barang</label>
                         <div class="col-xs-9">
-                            <input name="kode" id="nama_produk2" class="form-control" type="text" placeholder="Nama Barang" style="width:335px;" readonly>
+                            <input name="kodee" id="nama_produk2" class="form-control" type="text" placeholder="Nama Barang" style="width:335px;" readonly>
                         </div>
                 </div>
  
                 <div class="form-group">
                   <label class="control-label col-xs-3">Gambar</label>
                   <div class="col-xs-9">
-                    <input type="file" name="file" id="gambar" class="form-control" style="width:335px;" required>
+                    <input type="file" name="filee" id="gambar" class="form-control" style="width:335px;" >
                   </div> 
                 </div>
 
@@ -190,15 +190,15 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Nama Barang</label>
                         <div class="col-xs-9">
-                            <input name="nama" id="nama_produk2" class="form-control" type="text" placeholder="Nama Barang" style="width:335px;" required>
+                            <input name="namae" id="nama_produk2" class="form-control" type="text" placeholder="Nama Barang" style="width:335px;" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                       <label class="control-label col-xs-3">Kategori</label>
                       <div class="col-xs-9">
-                      <select class="form-control select2 select2-hidden-accessible" name="kategori" id="kategori2" style="width:335px;" tabindex="-1" aria-hidden="true">
-                        <option selected="selected">Pilih</option>
+                      <select class="form-control select2 select2-hidden-accessible" name="kategorie" id="kategori2" style="width:335px;" tabindex="-1" aria-hidden="true" required>
+                        <option selected="selected" hidden>Pilih</option>
                         <option>Makanan</option>
                         <option>Minuman</option>
                         <option>DLL</option>
@@ -209,28 +209,28 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Harga Modal</label>
                         <div class="col-xs-9">
-                            <input name="modal" id="modal2" class="form-control" type="text" placeholder="Harga Modal" style="width:335px;" required>
+                            <input name="modale" id="modal2" class="form-control" type="text" placeholder="Harga Modal" style="width:335px;" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Harga Jual</label>
                         <div class="col-xs-9">
-                            <input name="jual" id="jual2" class="form-control" type="text" placeholder="Harga Jual" style="width:335px;" required>
+                            <input name="juale" id="jual2" class="form-control" type="text" placeholder="Harga Jual" style="width:335px;" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Stok</label>
                         <div class="col-xs-9">
-                            <input name="stok" id="stok2" class="form-control" type="text" placeholder="Stok" style="width:335px;" required>
+                            <input name="stoke" id="stok2" class="form-control" type="text" placeholder="Stok" style="width:335px;" required>
                         </div>
                     </div>
 
                 <div class="form-group">
                   <label class="control-label col-xs-3">Deskripsi</label>
                   <div class="col-xs-9">
-                  <textarea class="form-control" name="deskripsi" id="deskripsi2" rows="3" placeholder="Deskripsi ..."></textarea>
+                  <textarea class="form-control" name="deskripsie" id="deskripsi2" rows="3" placeholder="Deskripsi ..."></textarea>
                   </div>
                 </div>
  
@@ -372,14 +372,14 @@
                 success: function(data){
                     $.each(data,function(id_produk,nama_produk,kategori_produk,harga_modal,harga_jual,stok_produk,deskripsi_produk,gambar_produk){
                         $('#ModalaEdit').modal('show');
-                        $('[name="kode"]').val(data.id_produk);
-                        $('[name="nama"]').val(data.nama_produk);
-                        $('[name="kategori"] option').eq(data.id_kategori).prop('selected', true);
-                        $('[name="modal"]').val(data.harga_modal);
-                        $('[name="jual"]').val(data.harga_jual);
-                        $('[name="stok"]').val(data.stok_produk);
-                        $('[name="deskripsi"]').val(data.deskripsi_produk);
-                        $('[name="gambar"]').val(data.gambar_produk);
+                        $('[name="kodee"]').val(data.id_produk);
+                        $('[name="namae"]').val(data.nama_produk);
+                        $('#kategori2').val(data.id_kategori).attr('selected','selected');
+                        $('[name="modale"]').val(data.harga_modal);
+                        $('[name="juale"]').val(data.harga_jual);
+                        $('[name="stoke"]').val(data.stok_produk);
+                        $('[name="deskripsie"]').val(data.deskripsi_produk);
+                        $('[name="gambare"]').val(data.gambar_produk);
                     });
                 }
             });
@@ -395,16 +395,7 @@
         });
  
         //Simpan Barang
-        // $('#btn_simpan').on('click',function(){
             $('#submit').submit(function(e){
-            // var kode=$('#kode_produk').val();
-            // var nama=$('#nama_produk').val();
-            // var kategori=$('#kategori option:selected').index();
-            // var modal=$('#modal').val();
-            // var jual=$('#jual').val();
-            // var stok=$('#stok').val();
-            // var deskripsi=$('#deskripsi').val();
-            // var gambar=$('#gambar').val();
             e.preventDefault();
             $.ajax({
                 type : "POST",
@@ -438,7 +429,7 @@
                 type : "POST",
                 url  : "<?php echo base_url('index.php/produk/update_produk')?>",
                 dataType : "JSON",
-                data :new FormData(this),// {kode:kode, nama:nama, kategori:kategori, modal:modal, jual:jual, stok:stok, deskripsi:deskripsi, gambar:gambar},
+                data :new FormData(this),
                 processData:false,
                 contentType:false,
                 cache:false,
